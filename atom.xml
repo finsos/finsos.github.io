@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://finsos.github.io/"/>
-  <updated>2018-01-17T14:39:36.123Z</updated>
+  <updated>2018-01-19T15:23:00.748Z</updated>
   <id>http://finsos.github.io/</id>
   
   <author>
@@ -17,19 +17,20 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Hello World</title>
-    <link href="http://finsos.github.io/2018/01/17/hello-world/"/>
-    <id>http://finsos.github.io/2018/01/17/hello-world/</id>
-    <published>2018-01-17T14:39:36.123Z</published>
-    <updated>2018-01-17T14:39:36.123Z</updated>
+    <title></title>
+    <link href="http://finsos.github.io/2018/01/19/%E5%86%99%E5%9C%A8%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E7%9A%84%E8%AF%9D/"/>
+    <id>http://finsos.github.io/2018/01/19/写在第一篇文章的话/</id>
+    <published>2018-01-19T15:23:00.744Z</published>
+    <updated>2018-01-19T15:23:00.748Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p><h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p><h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p><h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p><h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure><p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>]]></content>
+    <content type="html"><![CDATA[<p>博客开张了，The first blood还是要贡献一下，接触博客好多，今天算是第一次完全搭建属于自己的个人博客，也是无意间接触到GitHub Pages，觉得很方便，而且完美支持Markdown，就这么选好模板入坑了。</p><h2 id="写在第一篇文章的话"><a href="#写在第一篇文章的话" class="headerlink" title="写在第一篇文章的话"></a>写在第一篇文章的话</h2><p>这个博客，主要是用于记录自己的学习过程，以及工作中所踩的一些新坑，包括自己脑子记不住的知识点(大家都懂的^_^)!</p><p>其实偶尔也会有一些自己的心情体会发表一下，主要是吐槽啦~</p><h2 id="为什么开博客"><a href="#为什么开博客" class="headerlink" title="为什么开博客"></a>为什么开博客</h2><ul><li>希望养成良好的个人习惯</li><li>技术更新迭代很快，对我这种战5渣的冲击力太大，必须时刻提醒自己要思（挣）考（钱）！要学（高）习（薪）！</li><li>不定时更新，自己满足就好，当然，如果文章中有涉及到可以帮助大家的知识的，我也是很开心啦啦啦~</li></ul><h2 id="我是什么人"><a href="#我是什么人" class="headerlink" title="我是什么人"></a>我是什么人</h2><ul><li>目前一名普通的Linux运维（民工）</li><li>接触了一些貌似高大山的东西，消息队列、分布式计算、分布式存储、虚拟化、自动化运维、DevOps 等等</li><li>对于上面那些平时光说，光听，实际原理其实并没有吃透，纯粹操作一点，学会一点，其实然并卵。</li></ul><h2 id="本篇完"><a href="#本篇完" class="headerlink" title="本篇完"></a>本篇完</h2><ul><li>有点晚了，需要睡觉了，想起来再说。</li></ul>]]></content>
     
     <summary type="html">
     
       
       
-        &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
+        &lt;p&gt;博客开张了，The first blood还是要贡献一下，接触博客好多，今天算是第一次完全搭建属于自己的个人博客，也是无意间接触到GitHub Pages，觉得很方便，而且完美支持Markdown，就这么选好模板入坑了。&lt;/p&gt;
+&lt;h2 id=&quot;写在第一篇文章的话&quot;&gt;&lt;a 
       
     
     </summary>
