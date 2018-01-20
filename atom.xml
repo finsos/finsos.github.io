@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://finsos.github.io/"/>
-  <updated>2018-01-20T05:24:36.829Z</updated>
+  <updated>2018-01-20T15:20:47.157Z</updated>
   <id>http://finsos.github.io/</id>
   
   <author>
@@ -17,13 +17,39 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>centos搭建局域网repo源</title>
+    <link href="http://finsos.github.io/2018/01/20/centos%E6%90%AD%E5%BB%BA%E6%9C%AC%E5%9C%B0repo%E6%BA%90/"/>
+    <id>http://finsos.github.io/2018/01/20/centos搭建本地repo源/</id>
+    <published>2018-01-20T05:35:41.000Z</published>
+    <updated>2018-01-20T15:20:47.157Z</updated>
+    
+    <content type="html"><![CDATA[<p>起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。</p><h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><ul><li>安装httpd服务或者nginx服务。#省略</li></ul><h2 id="一些目录设定"><a href="#一些目录设定" class="headerlink" title="一些目录设定"></a>一些目录设定</h2><ul><li>DocumentRoot: /var/www/html</li><li>RepoDirectory: /var/www/html/HDP-UTILS-1.1.0.21</li><li>脚本目录： /etc/init.d</li></ul><h2 id="下载需要的RPM"><a href="#下载需要的RPM" class="headerlink" title="下载需要的RPM"></a>下载需要的RPM</h2><ul><li>进入DocumentRoot，将下载的rpm包copy至该目录</li><li><p>或者直接从已有源地址仓库下载：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#下载该目录下所有文件</span><br><span class="line">wget -c -r -np -P /var/www/html http://hdp.domain/HDP-UTILS-1.1.0.21</span><br></pre></td></tr></table></figure></li><li><p>解释一下wget命令的用法：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-c 断点续传</span><br><span class="line">-r 递归下载</span><br><span class="line">-np 不下载父附录</span><br><span class="line">-nd 不建立目录，若无此选项，将按照网站目录结构创建目录</span><br><span class="line">-P 将下载的所有内容存放到指定目录</span><br></pre></td></tr></table></figure></li></ul><h2 id="使用createrepo命令创建repo信息"><a href="#使用createrepo命令创建repo信息" class="headerlink" title="使用createrepo命令创建repo信息"></a>使用createrepo命令创建repo信息</h2><ul><li><p>安装createrepo</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#一般centos自带的yum仓库就有</span><br><span class="line">yum install -y createrepo</span><br></pre></td></tr></table></figure></li><li><p>执行命令创建repo</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#初始化源,生成repodata元数据,保存在RepoDirectory</span><br><span class="line">createrepo --workers=2 -pdo /var/www/html/HDP-UTILS-1.1.0.21 /var/www/html/HDP-UTILS-1.1.0.21 -c /tmp/HDP-UTILS-1.1.0.21 -v</span><br></pre></td></tr></table></figure></li><li><p>解释一下createrepo命令：</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-p 以漂亮的格式输出xml</span><br><span class="line">-d 使用sqlite存储生成的元数据，默认项</span><br><span class="line">-o 指定元数据的输出位置</span><br><span class="line">-c 指定缓存目录，缓存软件仓库中软件包的校验和信息</span><br><span class="line">-v 以详细模式输出</span><br></pre></td></tr></table></figure></li></ul><h2 id="启动http服务"><a href="#启动http服务" class="headerlink" title="启动http服务"></a>启动http服务</h2><ul><li>启动服务以供其他机器访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/httpd restart</span><br></pre></td></tr></table></figure></li></ul><h2 id="创建客户端使用的repo文件"><a href="#创建客户端使用的repo文件" class="headerlink" title="创建客户端使用的repo文件"></a>创建客户端使用的repo文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/yum.repos.d/HDP-UTILS.repo &lt;&lt;EOF</span><br><span class="line">    #VERSION_NUMBER=1.1.0.21</span><br><span class="line">    [HDP-UTILS-1.1.0.21]</span><br><span class="line">    name=HDP-UTILS-1.1.0.21</span><br><span class="line">    baseurl=http://local.network.domain/HDP-UTILS-1.1.0.21/</span><br><span class="line">    gpgcheck=0</span><br><span class="line">    enabled=1</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure><h2 id="访问测试"><a href="#访问测试" class="headerlink" title="访问测试"></a>访问测试</h2><ul><li>浏览器访问[<a href="http://local.network.domain/HDP-UTILS-1.1.0.21/" target="_blank" rel="noopener">http://local.network.domain/HDP-UTILS-1.1.0.21/</a>]</li><li>客户端服务器使用命令 yum repolist|grep “HDP-UTILS-1.1.0.21” 看能否获取到正确的repo和文件数量</li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;p&gt;起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。&lt;/p&gt;
+&lt;h2 id=&quot;依赖&quot;&gt;&lt;a href
+      
+    
+    </summary>
+    
+      <category term="Linxu运维" scheme="http://finsos.github.io/categories/Linxu%E8%BF%90%E7%BB%B4/"/>
+    
+    
+      <category term="repo仓库" scheme="http://finsos.github.io/tags/repo%E4%BB%93%E5%BA%93/"/>
+    
+  </entry>
+  
+  <entry>
     <title>写在第一篇文章的话</title>
     <link href="http://finsos.github.io/2018/01/19/%E5%86%99%E5%9C%A8%E7%AC%AC%E4%B8%80%E7%AF%87%E6%96%87%E7%AB%A0%E7%9A%84%E8%AF%9D/"/>
     <id>http://finsos.github.io/2018/01/19/写在第一篇文章的话/</id>
     <published>2018-01-19T15:23:44.000Z</published>
-    <updated>2018-01-20T05:24:36.829Z</updated>
+    <updated>2018-01-20T15:27:39.122Z</updated>
     
-    <content type="html"><![CDATA[<p>博客开张了，The first blood还是要贡献一下，接触博客好多，今天算是第一次完全搭建属于自己的个人博客，也是无意间接触到GitHub Pages，觉得很方便，而且完美支持Markdown，就这么选好模板入坑了。</p><h2 id="写在第一篇文章的话"><a href="#写在第一篇文章的话" class="headerlink" title="写在第一篇文章的话"></a>写在第一篇文章的话</h2><p>这个博客，主要是用于记录自己的学习过程，以及工作中所踩的一些新坑，包括自己脑子记不住的知识点(大家都懂的^_^)!</p><p>其实偶尔也会有一些自己的心情体会发表一下，主要是吐槽啦~</p><h2 id="为什么开博客"><a href="#为什么开博客" class="headerlink" title="为什么开博客"></a>为什么开博客</h2><ul><li>希望养成良好的个人习惯</li><li>技术更新迭代很快，对我这种战5渣的冲击力太大，必须时刻提醒自己要思（挣）考（钱）！要学（高）习（薪）！</li><li>不定时更新，自己满足就好，当然，如果文章中有涉及到可以帮助大家的知识的，我也是很开心啦啦啦~</li></ul><h2 id="我是什么人"><a href="#我是什么人" class="headerlink" title="我是什么人"></a>我是什么人</h2><ul><li>目前一名普通的Linux运维（民工）</li><li>接触了一些貌似高大山的东西，消息队列、分布式计算、分布式存储、虚拟化、自动化运维、DevOps 等等</li><li>对于上面那些平时光说，光听，实际原理其实并没有吃透，纯粹操作一点，学会一点，其实然并卵。</li></ul><h2 id="本篇完"><a href="#本篇完" class="headerlink" title="本篇完"></a>本篇完</h2><ul><li>有点晚了，需要睡觉了，想起来再说。</li></ul>]]></content>
+    <content type="html"><![CDATA[<p>博客开张了，The first blood还是要贡献一下，接触博客好多，今天算是第一次完全搭建属于自己的个人博客，也是无意间接触到GitHub Pages，觉得很方便，而且完美支持Markdown，就这么选好模板入坑了。</p><h2 id="写在第一篇文章的话"><a href="#写在第一篇文章的话" class="headerlink" title="写在第一篇文章的话"></a>写在第一篇文章的话</h2><p>这个博客，主要是用于记录自己的学习过程，以及工作中所踩的一些新坑，包括自己脑子记不住的知识点(大家都懂的^_^)!</p><p>其实偶尔也会有一些自己的心情体会发表一下，主要是吐槽啦~</p><h2 id="为什么开博客"><a href="#为什么开博客" class="headerlink" title="为什么开博客"></a>为什么开博客</h2><ul><li>希望养成良好的个人习惯</li><li>技术更新迭代很快，对我这种战5渣的冲击力太大，必须时刻提醒自己要思（挣）考（钱）！要学（高）习（薪）！</li><li>不定时更新，自己满足就好，当然，如果文章中有涉及到可以帮助大家的知识点，我也是很开心啦啦啦~</li></ul><h2 id="我是什么人"><a href="#我是什么人" class="headerlink" title="我是什么人"></a>我是什么人</h2><ul><li>目前一名普通的Linux运维（民工）</li><li>接触了一些貌似高大山的东西，消息队列、分布式计算、分布式存储、虚拟化、自动化运维、DevOps 等等</li><li>对于上面那些平时光说，光听，实际原理其实并没有吃透，纯粹操作一点，学会一点，其实然并卵。</li></ul><h2 id="本篇完"><a href="#本篇完" class="headerlink" title="本篇完"></a>本篇完</h2><ul><li>有点晚了，需要睡觉了，想起来再说。</li></ul>]]></content>
     
     <summary type="html">
     
@@ -35,6 +61,10 @@
     
     </summary>
     
+      <category term="文笔随记" scheme="http://finsos.github.io/categories/%E6%96%87%E7%AC%94%E9%9A%8F%E8%AE%B0/"/>
+    
+    
+      <category term="心情" scheme="http://finsos.github.io/tags/%E5%BF%83%E6%83%85/"/>
     
   </entry>
   

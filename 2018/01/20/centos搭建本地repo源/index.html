@@ -16,17 +16,21 @@
   <meta http-equiv="window-target" content="_top" />
   
   
-  <title>404 Not Found：该页无法显示 | Finsos</title>
-  <meta property="og:type" content="website">
-<meta property="og:title" content="404 Not Found：该页无法显示">
-<meta property="og:url" content="http://finsos.github.io/404.html">
+  <title>centos搭建局域网repo源 | Finsos</title>
+  <meta name="description" content="起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。 依赖 安装httpd服务或者nginx服务。#省略  一些目录设定 DocumentRoot: /var/www/html RepoDirectory: /var/www/">
+<meta name="keywords" content="repo仓库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="centos搭建局域网repo源">
+<meta property="og:url" content="http://finsos.github.io/2018/01/20/centos搭建本地repo源/index.html">
 <meta property="og:site_name" content="Finsos">
+<meta property="og:description" content="起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。 依赖 安装httpd服务或者nginx服务。#省略  一些目录设定 DocumentRoot: /var/www/html RepoDirectory: /var/www/">
 <meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2017-11-12T10:22:01.000Z">
+<meta property="og:updated_time" content="2018-01-20T15:20:47.157Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="404 Not Found：该页无法显示">
+<meta name="twitter:title" content="centos搭建局域网repo源">
+<meta name="twitter:description" content="起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。 依赖 安装httpd服务或者nginx服务。#省略  一些目录设定 DocumentRoot: /var/www/html RepoDirectory: /var/www/">
   <!-- Canonical links -->
-  <link rel="canonical" href="http://finsos.github.io/404.html">
+  <link rel="canonical" href="http://finsos.github.io/2018/01/20/centos搭建本地repo源/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Finsos" type="application/atom+xml">
   
@@ -38,6 +42,8 @@
   <link rel="stylesheet" href="/css/style.css">
   
     
+    
+        <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
     
 
 </head>
@@ -314,14 +320,14 @@
   
 <main class="main" role="main">
   <div class="content">
-  <article id="page-" class="article article-type-page" itemscope itemtype="http://schema.org/BlogPosting">
+  <article id="pages-centos搭建本地repo源" class="article article-type-pages" itemscope itemtype="http://schema.org/BlogPosting">
     
     <div class="article-header">
       
         
   
     <h1 class="article-title" itemprop="name">
-      404 Not Found：该页无法显示
+      centos搭建局域网repo源
     </h1>
   
 
@@ -329,12 +335,22 @@
       <div class="article-meta">
         <span class="article-date">
     <i class="fa fa-calendar-check-o"></i>
-	<a href="/404.html" class="article-date">
-	  <time datetime="2018-01-17T15:18:09.380Z" itemprop="datePublished">2018-01-17</time>
+	<a href="/2018/01/20/centos搭建本地repo源/" class="article-date">
+	  <time datetime="2018-01-20T05:35:41.000Z" itemprop="datePublished">2018-01-20</time>
 	</a>
 </span>
         
+  <span class="article-category">
+    <i class="fa fa-folder"></i>
+    <a class="article-category-link" href="/categories/Linxu运维/">Linxu运维</a>
+  </span>
+
         
+  <span class="article-tag">
+    <i class="fa fa-tag"></i>
+	<a class="article-tag-link" href="/tags/repo仓库/">repo仓库</a>
+  </span>
+
 
         
 	<span class="article-read hidden-xs">
@@ -345,13 +361,13 @@
 	</span>
 
 
-        <span class="post-comment"><i class="fa fa-commenting-o"></i> <a href="/404.html#comments" class="article-comment-link">评论</a></span>
+        <span class="post-comment"><i class="fa fa-commenting-o"></i> <a href="/2018/01/20/centos搭建本地repo源/#comments" class="article-comment-link">评论</a></span>
         
 	
-		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 0(字)</span>
+		<span class="post-wordcount hidden-xs" itemprop="wordCount">字数统计: 576(字)</span>
 	
 	
-		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 1(分)</span>
+		<span class="post-readcount hidden-xs" itemprop="timeRequired">阅读时长: 2(分)</span>
 	
 
       </div>
@@ -359,7 +375,44 @@
     </div>
     <div class="article-entry markdown-body" itemprop="articleBody">
       
-        <script type="text/javascript" src="http://www.qq.com/404/search_children.js" charset="utf-8" homepageurl="http://blog.cofess.com" homepagename="回到我的主页"></script>
+        <p>起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。</p>
+<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><ul>
+<li>安装httpd服务或者nginx服务。#省略</li>
+</ul>
+<h2 id="一些目录设定"><a href="#一些目录设定" class="headerlink" title="一些目录设定"></a>一些目录设定</h2><ul>
+<li>DocumentRoot: /var/www/html</li>
+<li>RepoDirectory: /var/www/html/HDP-UTILS-1.1.0.21</li>
+<li>脚本目录： /etc/init.d</li>
+</ul>
+<h2 id="下载需要的RPM"><a href="#下载需要的RPM" class="headerlink" title="下载需要的RPM"></a>下载需要的RPM</h2><ul>
+<li>进入DocumentRoot，将下载的rpm包copy至该目录</li>
+<li><p>或者直接从已有源地址仓库下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#下载该目录下所有文件</span><br><span class="line">wget -c -r -np -P /var/www/html http://hdp.domain/HDP-UTILS-1.1.0.21</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解释一下wget命令的用法：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-c 断点续传</span><br><span class="line">-r 递归下载</span><br><span class="line">-np 不下载父附录</span><br><span class="line">-nd 不建立目录，若无此选项，将按照网站目录结构创建目录</span><br><span class="line">-P 将下载的所有内容存放到指定目录</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="使用createrepo命令创建repo信息"><a href="#使用createrepo命令创建repo信息" class="headerlink" title="使用createrepo命令创建repo信息"></a>使用createrepo命令创建repo信息</h2><ul>
+<li><p>安装createrepo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#一般centos自带的yum仓库就有</span><br><span class="line">yum install -y createrepo</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>执行命令创建repo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#初始化源,生成repodata元数据,保存在RepoDirectory</span><br><span class="line">createrepo --workers=2 -pdo /var/www/html/HDP-UTILS-1.1.0.21 /var/www/html/HDP-UTILS-1.1.0.21 -c /tmp/HDP-UTILS-1.1.0.21 -v</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>解释一下createrepo命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-p 以漂亮的格式输出xml</span><br><span class="line">-d 使用sqlite存储生成的元数据，默认项</span><br><span class="line">-o 指定元数据的输出位置</span><br><span class="line">-c 指定缓存目录，缓存软件仓库中软件包的校验和信息</span><br><span class="line">-v 以详细模式输出</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="启动http服务"><a href="#启动http服务" class="headerlink" title="启动http服务"></a>启动http服务</h2><ul>
+<li>启动服务以供其他机器访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/httpd restart</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="创建客户端使用的repo文件"><a href="#创建客户端使用的repo文件" class="headerlink" title="创建客户端使用的repo文件"></a>创建客户端使用的repo文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/yum.repos.d/HDP-UTILS.repo &lt;&lt;EOF</span><br><span class="line">    #VERSION_NUMBER=1.1.0.21</span><br><span class="line">    [HDP-UTILS-1.1.0.21]</span><br><span class="line">    name=HDP-UTILS-1.1.0.21</span><br><span class="line">    baseurl=http://local.network.domain/HDP-UTILS-1.1.0.21/</span><br><span class="line">    gpgcheck=0</span><br><span class="line">    enabled=1</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h2 id="访问测试"><a href="#访问测试" class="headerlink" title="访问测试"></a>访问测试</h2><ul>
+<li>浏览器访问[<a href="http://local.network.domain/HDP-UTILS-1.1.0.21/" target="_blank" rel="noopener">http://local.network.domain/HDP-UTILS-1.1.0.21/</a>]</li>
+<li>客户端服务器使用命令 yum repolist|grep “HDP-UTILS-1.1.0.21” 看能否获取到正确的repo和文件数量</li>
+</ul>
 
       
     </div>
@@ -369,7 +422,7 @@
     
     <li class="post-copyright-link hidden-xs">
       <strong>本文链接：</strong>
-      <a href="http://finsos.github.io//404.html" title="404 Not Found：该页无法显示" target="_blank" rel="external">http://finsos.github.io//404.html</a>
+      <a href="http://finsos.github.io/2018/01/20/centos搭建本地repo源/" title="centos搭建局域网repo源" target="_blank" rel="external">http://finsos.github.io/2018/01/20/centos搭建本地repo源/</a>
     </li>
     
     <li class="post-copyright-license">
@@ -400,12 +453,30 @@
   </article>
   
     
+  <section id="comments">
+  	
+       
+
+
+    
+    
+  </section>
+
 
   
 </div>
 
   <nav class="bar bar-footer clearfix" data-stick-bottom>
   <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/01/19/写在第一篇文章的话/" title="写在第一篇文章的话">下一篇&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+  </ul>
   
   
   
@@ -474,6 +545,28 @@ window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
 
 
     
+    
+        
+    
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+<script>
+var gitment = new Gitment({
+  // id默认为当前页面url，如果url后带参数或锚点，gitment要重新初始化
+  // https://github.com/imsun/gitment/issues/55
+  // 解决方案：id:window.location.pathname,或者将id设置为当前页面标题
+  id: 'centos搭建局域网repo源', 
+  owner: 'finsos', // 可以是你的GitHub用户名，也可以是github id
+  repo: 'finsos.github.io',
+  oauth: {
+    client_id: '1601a1d0d17a848d7172',
+    client_secret: '534b748d485f87a510f4a9e2e4e115b85d3af0ec',
+  }
+})
+gitment.render('comments')
+</script>
+
+    
+
     
     
 
