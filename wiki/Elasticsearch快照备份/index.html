@@ -3,23 +3,24 @@
 <head>
     <meta charset="utf-8">
     
-    <title>About | Luke&#39;s Wikipedia</title>
+    <title>Elasticsearch快照备份 | Luke&#39;s Wikipedia</title>
     
     
-        <meta name="keywords" content="About">
+        <meta name="keywords" content="elasticsearch">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="作者介绍 座右铭：人生苦短，珍惜时间   兴趣爱好： 计算机、摄影、旅游、美食 工作状态： 就业中 关注领域： WEB开发，大数据，机器学习，架构运维  GET技能 前端：  JavaScript、Html5、VueJs Python：Flask框架，标准库 Linux： Shell脚本，command 大数据：Kafka、Zookeeper、Hbase、HDFS、Elasticsearch、Mo">
-<meta property="og:type" content="website">
-<meta property="og:title" content="About">
-<meta property="og:url" content="http://finsos.github.io/about/index.html">
+    <meta name="description" content="版本信息 ElasticSearch: 5.3.0JDK: 1.8OS: CentOS release 6.8 (Final)  修改bin/elasticsearch-plugin（如plugin命令不可用） 使用ansible-elasticsearch这个playbook安装会存在此问题  12# For a distribution package, the value is &quot;/etc/">
+<meta name="keywords" content="elasticsearch">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Elasticsearch快照备份">
+<meta property="og:url" content="http://finsos.github.io/wiki/Elasticsearch快照备份/index.html">
 <meta property="og:site_name" content="Luke&#39;s Wikipedia">
-<meta property="og:description" content="作者介绍 座右铭：人生苦短，珍惜时间   兴趣爱好： 计算机、摄影、旅游、美食 工作状态： 就业中 关注领域： WEB开发，大数据，机器学习，架构运维  GET技能 前端：  JavaScript、Html5、VueJs Python：Flask框架，标准库 Linux： Shell脚本，command 大数据：Kafka、Zookeeper、Hbase、HDFS、Elasticsearch、Mo">
+<meta property="og:description" content="版本信息 ElasticSearch: 5.3.0JDK: 1.8OS: CentOS release 6.8 (Final)  修改bin/elasticsearch-plugin（如plugin命令不可用） 使用ansible-elasticsearch这个playbook安装会存在此问题  12# For a distribution package, the value is &quot;/etc/">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-07-28T10:53:32.616Z">
+<meta property="og:updated_time" content="2018-07-28T15:09:40.267Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="About">
-<meta name="twitter:description" content="作者介绍 座右铭：人生苦短，珍惜时间   兴趣爱好： 计算机、摄影、旅游、美食 工作状态： 就业中 关注领域： WEB开发，大数据，机器学习，架构运维  GET技能 前端：  JavaScript、Html5、VueJs Python：Flask框架，标准库 Linux： Shell脚本，command 大数据：Kafka、Zookeeper、Hbase、HDFS、Elasticsearch、Mo">
+<meta name="twitter:title" content="Elasticsearch快照备份">
+<meta name="twitter:description" content="版本信息 ElasticSearch: 5.3.0JDK: 1.8OS: CentOS release 6.8 (Final)  修改bin/elasticsearch-plugin（如plugin命令不可用） 使用ansible-elasticsearch这个playbook安装会存在此问题  12# For a distribution package, the value is &quot;/etc/">
     
 
     
@@ -227,13 +228,13 @@
         
         
          <ul class="unstyled" id="tree"> 
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             Elasticsearch
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/Elasticsearch快照备份/">Elasticsearch快照备份</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/Elasticsearch快照备份/">Elasticsearch快照备份</a></li>  </ul> 
                     </li> 
                     
                     <li class="directory">
@@ -360,16 +361,42 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main"><article id="page-" class="article article-type-page" itemscope="" itemprop="blogPost">
+            <section id="main"><article id="post-Elasticsearch快照备份" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
             <header class="article-header">
                 
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Elasticsearch/">Elasticsearch</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/elasticsearch/">elasticsearch</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/Elasticsearch快照备份/">
+            <time datetime="2018-07-28T14:04:58.090Z" itemprop="datePublished">2018-07-28</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
                 
     
         <h1 class="article-title" itemprop="name">
-            About
+            Elasticsearch快照备份
         </h1>
     
 
@@ -380,26 +407,48 @@
         
         
             
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#版本信息"><span class="toc-number">1.</span> <span class="toc-text">版本信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#修改bin-elasticsearch-plugin（如plugin命令不可用）"><span class="toc-number">2.</span> <span class="toc-text">修改bin/elasticsearch-plugin（如plugin命令不可用）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装repository-hdfs插件"><span class="toc-number">3.</span> <span class="toc-text">安装repository-hdfs插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#重启ES服务加载插件"><span class="toc-number">4.</span> <span class="toc-text">重启ES服务加载插件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#利用快照API备份"><span class="toc-number">5.</span> <span class="toc-text">利用快照API备份</span></a></li></ol>
+                </div>
+            
         
         
-            <h2 id="作者介绍"><a href="#作者介绍" class="headerlink" title="作者介绍"></a>作者介绍</h2><blockquote>
-<p>座右铭：人生苦短，珍惜时间</p>
+            <h2 id="版本信息"><a href="#版本信息" class="headerlink" title="版本信息"></a>版本信息</h2><blockquote>
+<p>ElasticSearch: 5.3.0<br>JDK: 1.8<br>OS: CentOS release 6.8 (Final)</p>
 </blockquote>
+<h2 id="修改bin-elasticsearch-plugin（如plugin命令不可用）"><a href="#修改bin-elasticsearch-plugin（如plugin命令不可用）" class="headerlink" title="修改bin/elasticsearch-plugin（如plugin命令不可用）"></a>修改bin/elasticsearch-plugin（如plugin命令不可用）</h2><blockquote>
+<p>使用ansible-elasticsearch这个playbook安装会存在此问题</p>
+</blockquote>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># For a distribution package, the value is "/etc/sysconfig/elasticsearch".</span></span><br><span class="line">ES_ENV_FILE=<span class="string">"/etc/sysconfig/这里修改为实际的配置文件名"</span></span><br></pre></td></tr></table></figure>
+<h2 id="安装repository-hdfs插件"><a href="#安装repository-hdfs插件" class="headerlink" title="安装repository-hdfs插件"></a>安装repository-hdfs插件</h2><ul>
+<li>安装命令</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cd</span> /usr/share/elasticsearch/bin</span><br><span class="line">./elasticsearch-plugin install repository-hdfs</span><br></pre></td></tr></table></figure>
 <ul>
-<li>兴趣爱好： 计算机、摄影、旅游、美食</li>
-<li>工作状态： 就业中</li>
-<li>关注领域： WEB开发，大数据，机器学习，架构运维</li>
+<li>修改配置plugin-security.policy(5.3版本bug)</li>
 </ul>
-<h2 id="GET技能"><a href="#GET技能" class="headerlink" title="GET技能"></a>GET技能</h2><ul>
-<li>前端：  JavaScript、Html5、VueJs</li>
-<li>Python：Flask框架，标准库</li>
-<li>Linux： Shell脚本，command</li>
-<li>大数据：Kafka、Zookeeper、Hbase、HDFS、Elasticsearch、Mongodb</li>
+<p>Q: 创建快照时会报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">java.security.AccessControlException: access denied (<span class="string">"javax.security.auth.PrivateCredentialPermission"</span> <span class="string">"org.apache.hadoop.security.Credentials"</span> <span class="string">"read"</span>)</span><br></pre></td></tr></table></figure>
+<p>A: 修复报错</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 修改 ../plugins/repository-hdfs/plugin-security.policy</span></span><br><span class="line"><span class="comment"># 增加如下：</span></span><br><span class="line">  permission java.lang.RuntimePermission <span class="string">"accessDeclaredMembers"</span>;</span><br><span class="line">  permission java.lang.RuntimePermission <span class="string">"getClassLoader"</span>;</span><br><span class="line">  permission java.lang.RuntimePermission <span class="string">"shutdownHooks"</span>;</span><br><span class="line">  permission java.lang.reflect.ReflectPermission <span class="string">"suppressAccessChecks"</span>;</span><br><span class="line">  permission javax.security.auth.AuthPermission <span class="string">"doAs"</span>;</span><br><span class="line">  permission javax.security.auth.AuthPermission <span class="string">"getSubject"</span>;</span><br><span class="line">  permission javax.security.auth.AuthPermission <span class="string">"modifyPrivateCredentials"</span>;</span><br><span class="line">  permission java.security.AllPermission;</span><br><span class="line">  permission java.util.PropertyPermission <span class="string">"*"</span>, <span class="string">"read,write"</span>;</span><br><span class="line">  permission javax.security.auth.PrivateCredentialPermission <span class="string">"org.apache.hadoop.security.Credentials * \"*\""</span>, <span class="string">"read"</span>;</span><br><span class="line">  </span><br><span class="line"><span class="comment"># 修改Elastic配置目录下jvm.options</span></span><br><span class="line"><span class="comment"># 指定权限文件</span></span><br><span class="line">-Djava.security.policy=file:///usr/share/elasticsearch/plugins/repository-hdfs/plugin-security.policy</span><br></pre></td></tr></table></figure>
+<h2 id="重启ES服务加载插件"><a href="#重启ES服务加载插件" class="headerlink" title="重启ES服务加载插件"></a>重启ES服务加载插件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/elasticsearch restart</span><br></pre></td></tr></table></figure>
+<h2 id="利用快照API备份"><a href="#利用快照API备份" class="headerlink" title="利用快照API备份"></a>利用快照API备份</h2><ul>
+<li>在hdfs上创建备份目录授权</li>
 </ul>
-<h2 id="FQA"><a href="#FQA" class="headerlink" title="FQA"></a>FQA</h2><ul>
-<li>平常学习都比较零散，刚好用博客做一下记录</li>
-<li>不定时更新，想到就写点吧~</li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hadoop fs -mkdir /es_backup</span><br><span class="line"><span class="comment">#要求es用户可读写</span></span><br><span class="line">hadoop fs -chown elasticsearch:elasticsearch /es_backup</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建仓库</li>
 </ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">PUT /_snapshot/my_backup  </span><br><span class="line">&#123;  </span><br><span class="line">  <span class="string">"type"</span>: <span class="string">"hdfs"</span>,  </span><br><span class="line">  <span class="string">"settings"</span>: &#123;  </span><br><span class="line">         <span class="string">"path"</span>: <span class="string">"/es_backup"</span>,  </span><br><span class="line">         <span class="string">"load_defaults"</span>: <span class="string">"true"</span>,  </span><br><span class="line">         <span class="string">"compress"</span>: <span class="string">"true"</span>,  </span><br><span class="line">         <span class="string">"uri"</span>: <span class="string">"hdfs://172.26.33.55:8020"</span></span><br><span class="line">  &#125;  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 查看仓库信息</span></span><br><span class="line">GET /_snapshot/my_backup</span><br><span class="line"><span class="comment"># 删除仓库</span></span><br><span class="line">DELETE /_snapshot/my_backup</span><br><span class="line"></span><br><span class="line"><span class="comment"># 此时查看HDFS上的文件</span></span><br><span class="line">hadoop fs -ls /es_backup</span><br><span class="line">hadoop fs -cat /es_backup/index-0</span><br></pre></td></tr></table></figure>
+<ul>
+<li>创建快照</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">PUT /_snapshot/my_backup/snapshot_1?wait_for_completion=<span class="literal">true</span>  </span><br><span class="line">&#123;  </span><br><span class="line">  <span class="string">"indices"</span>: <span class="string">"index_1,index_2"</span>, //不设置这个属性，默认备份所有index</span><br><span class="line">  <span class="string">"ignore_unavailable"</span>: <span class="literal">true</span>,  </span><br><span class="line">  <span class="string">"include_global_state"</span>: <span class="literal">false</span>  </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment"># 查看快照信息，支持通配符</span></span><br><span class="line">GET _snapshot/my_backup/snapshot_1</span><br><span class="line"><span class="comment"># 删除快照，这里只是es的引用删除，hdfs中的文件并不会删除</span></span><br><span class="line">DELETE _snapshot/my_backup/snapshot_1</span><br></pre></td></tr></table></figure>
+<ul>
+<li>恢复快照</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">POST /_snapshot/my_backup/snapshot_1/_restore  </span><br><span class="line">&#123;  </span><br><span class="line">  <span class="string">"indices"</span>: <span class="string">"index_1,index_2"</span>,   //指定索引恢复，不指定就是所有</span><br><span class="line">  <span class="string">"ignore_unavailable"</span>: <span class="literal">true</span>,     //忽略恢复时异常索引  </span><br><span class="line">  <span class="string">"include_global_state"</span>: <span class="literal">false</span>,  //是否存储全局转态信息,fasle代表有一个或几个失败，不会导致整个任务失败  </span><br><span class="line">  <span class="string">"rename_pattern"</span>: <span class="string">"index_(.+)"</span>, //是否需要重命名索引  </span><br><span class="line">  <span class="string">"rename_replacement"</span>: <span class="string">"restored_index_<span class="variable">$1</span>"</span> //替换后的索引名  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 监控恢复情况</span></span><br><span class="line">GET restored_index_1/_recovery</span><br></pre></td></tr></table></figure>
 
             </div>
         
@@ -410,6 +459,25 @@
 
 
     
+<nav id="article-nav">
+    
+        <a href="/wiki/index/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Welcome to luke&#39;s wiki site!
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/setup模块过滤多个返回参数/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">setup模块过滤多个返回参数</div>
+        </a>
+    
+</nav>
+
 
 
 

@@ -3,19 +3,24 @@
 <head>
     <meta charset="utf-8">
     
-    <title>分类: 运维记录 | Luke&#39;s Wikipedia</title>
+    <title>setup模块过滤多个返回参数 | Luke&#39;s Wikipedia</title>
     
     
-        <meta name="keywords" content="Luke&#39;s Wikipedia">
+        <meta name="keywords" content="ansible">
     
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Luke&#39;s Wikipedia">
-<meta property="og:url" content="http://finsos.github.io/categories/运维记录/index.html">
+    <meta name="description" content="一句话命令 使用setup模块过滤多个返回参数，这里用到了jq来解析返回的json数据ansible hosts -m setup | sed &amp;#39;s/.*=&amp;gt;//g&amp;#39;|jq &amp;#39;.ansible_facts|{ip: .ansible_default_ipv4.address, version: .ansible_distribution_version}&amp;#39;">
+<meta name="keywords" content="ansible">
+<meta property="og:type" content="article">
+<meta property="og:title" content="setup模块过滤多个返回参数">
+<meta property="og:url" content="http://finsos.github.io/wiki/setup模块过滤多个返回参数/index.html">
 <meta property="og:site_name" content="Luke&#39;s Wikipedia">
+<meta property="og:description" content="一句话命令 使用setup模块过滤多个返回参数，这里用到了jq来解析返回的json数据ansible hosts -m setup | sed &amp;#39;s/.*=&amp;gt;//g&amp;#39;|jq &amp;#39;.ansible_facts|{ip: .ansible_default_ipv4.address, version: .ansible_distribution_version}&amp;#39;">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-28T15:25:04.719Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Luke&#39;s Wikipedia">
+<meta name="twitter:title" content="setup模块过滤多个返回参数">
+<meta name="twitter:description" content="一句话命令 使用setup模块过滤多个返回参数，这里用到了jq来解析返回的json数据ansible hosts -m setup | sed &amp;#39;s/.*=&amp;gt;//g&amp;#39;|jq &amp;#39;.ansible_facts|{ip: .ansible_default_ipv4.address, version: .ansible_distribution_version}&amp;#39;">
     
 
     
@@ -259,9 +264,9 @@
                      </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             运维记录
                         </a>
@@ -275,13 +280,13 @@
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/centos搭建本地repo源/">centos搭建局域网repo源</a></li>  </ul> 
                     </li> 
                     
-                    <li class="directory">
+                    <li class="directory open">
                         <a href="#" data-role="directory">
-                            <i class="fa fa-folder"></i>
+                            <i class="fa fa-folder-open"></i>
                             &nbsp;
                             ansible
                         </a>
-                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/setup模块过滤多个返回参数/">setup模块过滤多个返回参数</a></li>  </ul> 
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/setup模块过滤多个返回参数/">setup模块过滤多个返回参数</a></li>  </ul> 
                     </li> 
                      </ul> 
                     </li> 
@@ -356,25 +361,26 @@
     <div id="toTop" class="fa fa-angle-up"></div>
 </aside>
             
-            <section id="main">
-<div class="timeline timeline-wrap">
-    <div class="timeline-row timeline-row-major">
-        <span class="node"><i class="fa fa-folder"></i></span>
-        <h1 class="title">运维记录</h1>
-    </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+            <section id="main"><article id="post-setup模块过滤多个返回参数" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
                 
-    
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/wiki/setup模块过滤多个返回参数/">setup模块过滤多个返回参数</a>
-        </h1>
-    
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/运维记录/">运维记录</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/运维记录/ansible/">ansible</a>
+    </div>
 
-                <div class="article-meta">
-                    
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/ansible/">ansible</a>
+    </div>
+
+                        
     <div class="article-date">
         <i class="fa fa-calendar"></i>
         <a href="/wiki/setup模块过滤多个返回参数/">
@@ -383,59 +389,77 @@
     </div>
 
 
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/运维记录/">运维记录</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/运维记录/ansible/">ansible</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/ansible/">ansible</a>
-    </div>
-
-                </div>
-            </div>
-        </div>
-    
-        <div class="timeline-row">
-            <span class="node"></span>
-            <div class="content">
+                        
+                        
+                    </div>
+                
                 
     
-        <h1 itemprop="name">
-            <a class="timeline-article-title" href="/wiki/centos搭建本地repo源/">centos搭建局域网repo源</a>
+        <h1 class="article-title" itemprop="name">
+            setup模块过滤多个返回参数
         </h1>
     
 
-                <div class="article-meta">
-                    
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/centos搭建本地repo源/">
-            <time datetime="2018-01-20T05:35:41.000Z" itemprop="datePublished">2018-01-20</time>
-        </a>
-    </div>
-
-
-                    
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/运维记录/">运维记录</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/运维记录/Linux/">Linux</a>
-    </div>
-
-                    
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/repo仓库/">repo仓库</a>
-    </div>
-
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#一句话命令"><span class="toc-number">1.</span> <span class="toc-text">一句话命令</span></a></li></ol>
                 </div>
+            
+        
+        
+            <h2 id="一句话命令"><a href="#一句话命令" class="headerlink" title="一句话命令"></a>一句话命令</h2><ul>
+<li>使用setup模块过滤多个返回参数，这里用到了jq来解析返回的json数据<br><code>ansible hosts -m setup | sed &#39;s/.*=&gt;//g&#39;|jq &#39;.ansible_facts|{ip: .ansible_default_ipv4.address, version: .ansible_distribution_version}&#39;</code></li>
+</ul>
+
             </div>
-        </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
     
-</div>
+<nav id="article-nav">
+    
+        <a href="/wiki/Elasticsearch快照备份/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    Elasticsearch快照备份
+                
+            </div>
+        </a>
+    
+    
+        <a href="/wiki/进军深度学习/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">准备开始 深度学习</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
 </section>
         </div>
         <footer id="footer">

@@ -16,8 +16,8 @@
 <meta property="og:url" content="http://finsos.github.io/wiki/centos搭建本地repo源/index.html">
 <meta property="og:site_name" content="Luke&#39;s Wikipedia">
 <meta property="og:description" content="起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。 依赖 安装httpd服务或者nginx服务。#省略  一些目录设定 DocumentRoot: /var/www/html RepoDirectory: /var/www/">
-<meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-07-28T10:23:07.279Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-28T15:24:47.264Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="centos搭建局域网repo源">
 <meta name="twitter:description" content="起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。 依赖 安装httpd服务或者nginx服务。#省略  一些目录设定 DocumentRoot: /var/www/html RepoDirectory: /var/www/">
@@ -89,14 +89,14 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -108,11 +108,11 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -142,7 +142,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
     </div>
 
                 </td>
@@ -162,16 +162,16 @@
             <h2 id="name">Luke</h2>
             <h3 id="title">Designer &amp; Programmer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Chengdu, China</span>
-            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">关注我</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
-                <span>posts</span>
+                6
+                <span>文章</span>
             </div>
             <div class="article-info-block">
-                2
-                <span>tags</span>
+                4
+                <span>标签</span>
             </div>
         </div>
         
@@ -218,7 +218,7 @@
         
     <div class="widget-wrap" id="categories">
         <h3 class="widget-title">
-            <span>categories</span>
+            <span>分类</span>
             &nbsp;
             <a id="allExpand" href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -228,6 +228,15 @@
         
         
          <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Elasticsearch
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/Elasticsearch快照备份/">Elasticsearch快照备份</a></li>  </ul> 
+                    </li> 
+                    
                     <li class="directory">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
@@ -270,9 +279,18 @@
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/centos搭建本地repo源/">centos搭建局域网repo源</a></li>  </ul> 
                     </li> 
-                     </ul> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ansible
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/setup模块过滤多个返回参数/">setup模块过滤多个返回参数</a></li>  </ul> 
                     </li> 
                      </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">Welcome to luke's wiki site!</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -389,6 +407,11 @@
         
         
             
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#依赖"><span class="toc-number">1.</span> <span class="toc-text">依赖</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#一些目录设定"><span class="toc-number">2.</span> <span class="toc-text">一些目录设定</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#下载需要的RPM"><span class="toc-number">3.</span> <span class="toc-text">下载需要的RPM</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#使用createrepo命令创建repo信息"><span class="toc-number">4.</span> <span class="toc-text">使用createrepo命令创建repo信息</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#启动http服务"><span class="toc-number">5.</span> <span class="toc-text">启动http服务</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#创建客户端使用的repo文件"><span class="toc-number">6.</span> <span class="toc-text">创建客户端使用的repo文件</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#访问测试"><span class="toc-number">7.</span> <span class="toc-text">访问测试</span></a></li></ol>
+                </div>
+            
         
         
             <p>起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。</p>
@@ -403,31 +426,31 @@
 <h2 id="下载需要的RPM"><a href="#下载需要的RPM" class="headerlink" title="下载需要的RPM"></a>下载需要的RPM</h2><ul>
 <li>进入DocumentRoot，将下载的rpm包copy至该目录</li>
 <li><p>或者直接从已有源地址仓库下载：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#下载该目录下所有文件</span><br><span class="line">wget -c -r -np -P /var/www/html http://hdp.domain/HDP-UTILS-1.1.0.21</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#下载该目录下所有文件</span></span><br><span class="line">wget -c -r -np -P /var/www/html http://hdp.domain/HDP-UTILS-1.1.0.21</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>解释一下wget命令的用法：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-c 断点续传</span><br><span class="line">-r 递归下载</span><br><span class="line">-np 不下载父附录</span><br><span class="line">-nd 不建立目录，若无此选项，将按照网站目录结构创建目录</span><br><span class="line">-P 将下载的所有内容存放到指定目录</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-c 断点续传</span><br><span class="line">-r 递归下载</span><br><span class="line">-np 不下载父附录</span><br><span class="line">-nd 不建立目录，若无此选项，将按照网站目录结构创建目录</span><br><span class="line">-P 将下载的所有内容存放到指定目录</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="使用createrepo命令创建repo信息"><a href="#使用createrepo命令创建repo信息" class="headerlink" title="使用createrepo命令创建repo信息"></a>使用createrepo命令创建repo信息</h2><ul>
 <li><p>安装createrepo</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#一般centos自带的yum仓库就有</span><br><span class="line">yum install -y createrepo</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#一般centos自带的yum仓库就有</span></span><br><span class="line">yum install -y createrepo</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>执行命令创建repo</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#初始化源,生成repodata元数据,保存在RepoDirectory</span><br><span class="line">createrepo --workers=2 -pdo /var/www/html/HDP-UTILS-1.1.0.21 /var/www/html/HDP-UTILS-1.1.0.21 -c /tmp/HDP-UTILS-1.1.0.21 -v</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>解释一下createrepo命令：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-p 以漂亮的格式输出xml</span><br><span class="line">-d 使用sqlite存储生成的元数据，默认项</span><br><span class="line">-o 指定元数据的输出位置</span><br><span class="line">-c 指定缓存目录，缓存软件仓库中软件包的校验和信息</span><br><span class="line">-v 以详细模式输出</span><br></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-p 以漂亮的格式输出xml</span><br><span class="line">-d 使用sqlite存储生成的元数据，默认项</span><br><span class="line">-o 指定元数据的输出位置</span><br><span class="line">-c 指定缓存目录，缓存软件仓库中软件包的校验和信息</span><br><span class="line">-v 以详细模式输出</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h2 id="启动http服务"><a href="#启动http服务" class="headerlink" title="启动http服务"></a>启动http服务</h2><ul>
-<li>启动服务以供其他机器访问<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/httpd restart</span><br></pre></td></tr></table></figure>
+<li>启动服务以供其他机器访问<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/httpd restart</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="创建客户端使用的repo文件"><a href="#创建客户端使用的repo文件" class="headerlink" title="创建客户端使用的repo文件"></a>创建客户端使用的repo文件</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/yum.repos.d/HDP-UTILS.repo &lt;&lt;EOF</span><br><span class="line">    #VERSION_NUMBER=1.1.0.21</span><br><span class="line">    [HDP-UTILS-1.1.0.21]</span><br><span class="line">    name=HDP-UTILS-1.1.0.21</span><br><span class="line">    baseurl=http://local.network.domain/HDP-UTILS-1.1.0.21/</span><br><span class="line">    gpgcheck=0</span><br><span class="line">    enabled=1</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
+<h2 id="创建客户端使用的repo文件"><a href="#创建客户端使用的repo文件" class="headerlink" title="创建客户端使用的repo文件"></a>创建客户端使用的repo文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/yum.repos.d/HDP-UTILS.repo &lt;&lt;EOF</span><br><span class="line">    <span class="comment">#VERSION_NUMBER=1.1.0.21</span></span><br><span class="line">    [HDP-UTILS-1.1.0.21]</span><br><span class="line">    name=HDP-UTILS-1.1.0.21</span><br><span class="line">    baseurl=http://local.network.domain/HDP-UTILS-1.1.0.21/</span><br><span class="line">    gpgcheck=0</span><br><span class="line">    enabled=1</span><br><span class="line">EOF</span><br></pre></td></tr></table></figure>
 <h2 id="访问测试"><a href="#访问测试" class="headerlink" title="访问测试"></a>访问测试</h2><ul>
 <li>浏览器访问[<a href="http://local.network.domain/HDP-UTILS-1.1.0.21/" rel="external nofollow noopener noreferrer" target="_blank">http://local.network.domain/HDP-UTILS-1.1.0.21/</a>]</li>
-<li>客户端服务器使用命令 yum repolist|grep “HDP-UTILS-1.1.0.21” 看能否获取到正确的repo和文件数量</li>
+<li>客户端服务器使用命令 <code>yum repolist|grep &quot;HDP-UTILS-1.1.0.21&quot;</code> 看能否获取到正确的repo和文件数量</li>
 </ul>
 
             </div>
@@ -442,7 +465,7 @@
 <nav id="article-nav">
     
         <a href="/wiki/进军深度学习/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
+            <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
                     准备开始 深度学习
@@ -452,7 +475,7 @@
     
     
         <a href="/wiki/写在第一篇文章的话/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
+            <strong class="article-nav-caption">下一篇</strong>
             <div class="article-nav-title">写在第一篇文章的话</div>
         </a>
     

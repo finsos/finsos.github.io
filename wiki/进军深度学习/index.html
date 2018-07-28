@@ -16,8 +16,8 @@
 <meta property="og:url" content="http://finsos.github.io/wiki/进军深度学习/index.html">
 <meta property="og:site_name" content="Luke&#39;s Wikipedia">
 <meta property="og:description" content="一直写了没有发出， 拖沓症真的挺严重。。。  进军深度学习课程近期看了一些关于人工智能系列的文章，对这种前沿的技术充满了兴趣，但是苦于上学时候没有好好学习😂，所以想补充一下数学基础知识。学习的过程中顺便温习了一下解方程 目前看的数学书籍 线性代数 看了前面几章，了解了下向量的概念，以及矩阵的概念。其次，就是解方程组。  又是一两个月没看了，忘得差不多了，唉   离散数学 暂时搁置   简单数学">
-<meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-07-28T10:47:43.905Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-28T15:25:11.999Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="准备开始 深度学习">
 <meta name="twitter:description" content="一直写了没有发出， 拖沓症真的挺严重。。。  进军深度学习课程近期看了一些关于人工智能系列的文章，对这种前沿的技术充满了兴趣，但是苦于上学时候没有好好学习😂，所以想补充一下数学基础知识。学习的过程中顺便温习了一下解方程 目前看的数学书籍 线性代数 看了前面几章，了解了下向量的概念，以及矩阵的概念。其次，就是解方程组。  又是一两个月没看了，忘得差不多了，唉   离散数学 暂时搁置   简单数学">
@@ -89,14 +89,14 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -108,11 +108,11 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -142,7 +142,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
     </div>
 
                 </td>
@@ -162,16 +162,16 @@
             <h2 id="name">Luke</h2>
             <h3 id="title">Designer &amp; Programmer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Chengdu, China</span>
-            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">关注我</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
-                <span>posts</span>
+                6
+                <span>文章</span>
             </div>
             <div class="article-info-block">
-                2
-                <span>tags</span>
+                4
+                <span>标签</span>
             </div>
         </div>
         
@@ -218,7 +218,7 @@
         
     <div class="widget-wrap" id="categories">
         <h3 class="widget-title">
-            <span>categories</span>
+            <span>分类</span>
             &nbsp;
             <a id="allExpand" href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -228,6 +228,15 @@
         
         
          <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Elasticsearch
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/Elasticsearch快照备份/">Elasticsearch快照备份</a></li>  </ul> 
+                    </li> 
+                    
                     <li class="directory open">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
@@ -270,9 +279,18 @@
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/centos搭建本地repo源/">centos搭建局域网repo源</a></li>  </ul> 
                     </li> 
-                     </ul> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ansible
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/setup模块过滤多个返回参数/">setup模块过滤多个返回参数</a></li>  </ul> 
                     </li> 
                      </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">Welcome to luke's wiki site!</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -389,6 +407,11 @@
         
         
             
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#进军深度学习课程"><span class="toc-number">1.</span> <span class="toc-text">进军深度学习课程</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目前看的数学书籍"><span class="toc-number">2.</span> <span class="toc-text">目前看的数学书籍</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#简单数学示例"><span class="toc-number">3.</span> <span class="toc-text">简单数学示例</span></a></li></ol>
+                </div>
+            
         
         
             <blockquote>
@@ -406,7 +429,7 @@
 <p>暂时搁置</p>
 </li>
 </ul>
-<h2 id="简单数学示例"><a href="#简单数学示例" class="headerlink" title="简单数学示例"></a>简单数学示例</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/env python</span><br><span class="line">#-*-encoding: utf8-*-</span><br><span class="line">#python解一元方程</span><br><span class="line"></span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line">usag: </span><br><span class="line">    simple.py number power symbol</span><br><span class="line">notice: </span><br><span class="line">    please input full args.</span><br><span class="line">args: </span><br><span class="line">    number - you can input any numbers.</span><br><span class="line">    power  - it&apos;s a power for number like 3^2, the 2 is 3&apos;power.</span><br><span class="line">    symbol - the math symbol like +,-,*,/</span><br><span class="line">&apos;&apos;&apos;</span><br><span class="line"></span><br><span class="line">import os</span><br><span class="line">import string</span><br><span class="line"></span><br><span class="line">def quadratic(number, power, symbol):</span><br><span class="line">    i = 1</span><br><span class="line">    result = []</span><br><span class="line">    text = []</span><br><span class="line">    while True:</span><br><span class="line">        calc_text = str(pow(number, power)) + &apos; &apos; + symbol + &apos; &apos; + str(pow((number - i), power))            </span><br><span class="line">        calc_result = eval(calc_text)</span><br><span class="line">        i += 1     </span><br><span class="line">        if calc_result &lt; 0:</span><br><span class="line">            print (u&apos;no solution!&apos;)</span><br><span class="line">            continue</span><br><span class="line">        if i &gt; number:</span><br><span class="line">            break       </span><br><span class="line">        result.append(calc_result)</span><br><span class="line">        text.append(calc_text)</span><br><span class="line">    return result, text</span><br><span class="line">    </span><br><span class="line">if __name__ == &apos;__main__&apos;:</span><br><span class="line">    try:</span><br><span class="line">        number = os.sys.argv[1]</span><br><span class="line">        power  = os.sys.argv[2]</span><br><span class="line">        symbol = os.sys.argv[3]</span><br><span class="line">        number = int(number)</span><br><span class="line">        power  = int(power)</span><br><span class="line">        symbol = str(symbol)</span><br><span class="line">        symbol_standard = &apos;+-*/&apos;</span><br><span class="line">        symbol_sense = string.find(symbol_standard, symbol) != -1</span><br><span class="line">        if not (isinstance(number,int) and isinstance(power,int) and symbol_sense):</span><br><span class="line">            print (__doc__)</span><br><span class="line">            os.sys.exit(1)</span><br><span class="line">    except Exception:</span><br><span class="line">        print (__doc__)</span><br><span class="line">        os.sys.exit(1)</span><br><span class="line">        </span><br><span class="line">    (result,text) = quadratic(number, power, symbol)</span><br><span class="line">    </span><br><span class="line">    i = 0</span><br><span class="line">    total = int()</span><br><span class="line">    </span><br><span class="line">    for i in range(len(text)):</span><br><span class="line">        total += result[i]</span><br><span class="line">        print (&apos;%s = %s&apos; % (text[i], result[i]))</span><br><span class="line">        i += 1</span><br><span class="line">        if i &gt; len(text):</span><br><span class="line">            break</span><br><span class="line">    print (&apos;total: %s \nlength: %s \naverage: %s&apos; % (total, len(text), round(total/len(text))))</span><br></pre></td></tr></table></figure>
+<h2 id="简单数学示例"><a href="#简单数学示例" class="headerlink" title="简单数学示例"></a>简单数学示例</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#!/bin/env python</span></span><br><span class="line"><span class="comment">#-*-encoding: utf8-*-</span></span><br><span class="line"><span class="comment">#python解一元方程</span></span><br><span class="line"></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="string">usag: </span></span><br><span class="line"><span class="string">    simple.py number power symbol</span></span><br><span class="line"><span class="string">notice: </span></span><br><span class="line"><span class="string">    please input full args.</span></span><br><span class="line"><span class="string">args: </span></span><br><span class="line"><span class="string">    number - you can input any numbers.</span></span><br><span class="line"><span class="string">    power  - it's a power for number like 3^2, the 2 is 3'power.</span></span><br><span class="line"><span class="string">    symbol - the math symbol like +,-,*,/</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> os</span><br><span class="line"><span class="keyword">import</span> string</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">quadratic</span><span class="params">(number, power, symbol)</span>:</span></span><br><span class="line">    i = <span class="number">1</span></span><br><span class="line">    result = []</span><br><span class="line">    text = []</span><br><span class="line">    <span class="keyword">while</span> <span class="keyword">True</span>:</span><br><span class="line">        calc_text = str(pow(number, power)) + <span class="string">' '</span> + symbol + <span class="string">' '</span> + str(pow((number - i), power))            </span><br><span class="line">        calc_result = eval(calc_text)</span><br><span class="line">        i += <span class="number">1</span>     </span><br><span class="line">        <span class="keyword">if</span> calc_result &lt; <span class="number">0</span>:</span><br><span class="line">            <span class="keyword">print</span> (<span class="string">u'no solution!'</span>)</span><br><span class="line">            <span class="keyword">continue</span></span><br><span class="line">        <span class="keyword">if</span> i &gt; number:</span><br><span class="line">            <span class="keyword">break</span>       </span><br><span class="line">        result.append(calc_result)</span><br><span class="line">        text.append(calc_text)</span><br><span class="line">    <span class="keyword">return</span> result, text</span><br><span class="line">    </span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    <span class="keyword">try</span>:</span><br><span class="line">        number = os.sys.argv[<span class="number">1</span>]</span><br><span class="line">        power  = os.sys.argv[<span class="number">2</span>]</span><br><span class="line">        symbol = os.sys.argv[<span class="number">3</span>]</span><br><span class="line">        number = int(number)</span><br><span class="line">        power  = int(power)</span><br><span class="line">        symbol = str(symbol)</span><br><span class="line">        symbol_standard = <span class="string">'+-*/'</span></span><br><span class="line">        symbol_sense = string.find(symbol_standard, symbol) != <span class="number">-1</span></span><br><span class="line">        <span class="keyword">if</span> <span class="keyword">not</span> (isinstance(number,int) <span class="keyword">and</span> isinstance(power,int) <span class="keyword">and</span> symbol_sense):</span><br><span class="line">            <span class="keyword">print</span> (__doc__)</span><br><span class="line">            os.sys.exit(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">except</span> Exception:</span><br><span class="line">        <span class="keyword">print</span> (__doc__)</span><br><span class="line">        os.sys.exit(<span class="number">1</span>)</span><br><span class="line">        </span><br><span class="line">    (result,text) = quadratic(number, power, symbol)</span><br><span class="line">    </span><br><span class="line">    i = <span class="number">0</span></span><br><span class="line">    total = int()</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(len(text)):</span><br><span class="line">        total += result[i]</span><br><span class="line">        <span class="keyword">print</span> (<span class="string">'%s = %s'</span> % (text[i], result[i]))</span><br><span class="line">        i += <span class="number">1</span></span><br><span class="line">        <span class="keyword">if</span> i &gt; len(text):</span><br><span class="line">            <span class="keyword">break</span></span><br><span class="line">    <span class="keyword">print</span> (<span class="string">'total: %s \nlength: %s \naverage: %s'</span> % (total, len(text), round(total/len(text))))</span><br></pre></td></tr></table></figure>
             </div>
         
         <footer class="article-footer">
@@ -418,9 +441,18 @@
     
 <nav id="article-nav">
     
+        <a href="/wiki/setup模块过滤多个返回参数/" id="article-nav-newer" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">上一篇</strong>
+            <div class="article-nav-title">
+                
+                    setup模块过滤多个返回参数
+                
+            </div>
+        </a>
+    
     
         <a href="/wiki/centos搭建本地repo源/" id="article-nav-older" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Older</strong>
+            <strong class="article-nav-caption">下一篇</strong>
             <div class="article-nav-title">centos搭建局域网repo源</div>
         </a>
     

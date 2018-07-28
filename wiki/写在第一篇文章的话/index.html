@@ -15,8 +15,8 @@
 <meta property="og:url" content="http://finsos.github.io/wiki/写在第一篇文章的话/index.html">
 <meta property="og:site_name" content="Luke&#39;s Wikipedia">
 <meta property="og:description" content="博客开张了，The first blood还是要贡献一下，接触博客好多，今天算是第一次完全搭建属于自己的个人博客，也是无意间接触到GitHub Pages，觉得很方便，而且完美支持Markdown，就这么选好模板入坑了。 写在第一篇文章的话这个博客，主要是用于记录自己的学习过程，以及工作中所踩的一些新坑，包括自己脑子记不住的知识点(大家都懂的^_^)! 其实偶尔也会有一些自己的心情体会发表一下，主">
-<meta property="og:locale" content="zh">
-<meta property="og:updated_time" content="2018-07-28T10:46:27.161Z">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-07-28T15:26:09.285Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="写在第一篇文章的话">
 <meta name="twitter:description" content="博客开张了，The first blood还是要贡献一下，接触博客好多，今天算是第一次完全搭建属于自己的个人博客，也是无意间接触到GitHub Pages，觉得很方便，而且完美支持Markdown，就这么选好模板入坑了。 写在第一篇文章的话这个博客，主要是用于记录自己的学习过程，以及工作中所踩的一些新坑，包括自己脑子记不住的知识点(大家都懂的^_^)! 其实偶尔也会有一些自己的心情体会发表一下，主">
@@ -88,14 +88,14 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -107,11 +107,11 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -141,7 +141,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
     </div>
 
                 </td>
@@ -161,16 +161,16 @@
             <h2 id="name">Luke</h2>
             <h3 id="title">Designer &amp; Programmer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Chengdu, China</span>
-            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">关注我</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
-                <span>posts</span>
+                6
+                <span>文章</span>
             </div>
             <div class="article-info-block">
-                2
-                <span>tags</span>
+                4
+                <span>标签</span>
             </div>
         </div>
         
@@ -217,7 +217,7 @@
         
     <div class="widget-wrap" id="categories">
         <h3 class="widget-title">
-            <span>categories</span>
+            <span>分类</span>
             &nbsp;
             <a id="allExpand" href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -227,6 +227,15 @@
         
         
          <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Elasticsearch
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/Elasticsearch快照备份/">Elasticsearch快照备份</a></li>  </ul> 
+                    </li> 
+                    
                     <li class="directory open">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder-open"></i>
@@ -269,9 +278,18 @@
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/centos搭建本地repo源/">centos搭建局域网repo源</a></li>  </ul> 
                     </li> 
-                     </ul> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ansible
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/setup模块过滤多个返回参数/">setup模块过滤多个返回参数</a></li>  </ul> 
                     </li> 
                      </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">Welcome to luke's wiki site!</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -414,7 +432,7 @@
 <nav id="article-nav">
     
         <a href="/wiki/centos搭建本地repo源/" id="article-nav-newer" class="article-nav-link-wrap">
-            <strong class="article-nav-caption">Newer</strong>
+            <strong class="article-nav-caption">上一篇</strong>
             <div class="article-nav-title">
                 
                     centos搭建局域网repo源

@@ -13,7 +13,7 @@
 <meta property="og:title" content="Luke&#39;s Wikipedia">
 <meta property="og:url" content="http://finsos.github.io/index.html">
 <meta property="og:site_name" content="Luke&#39;s Wikipedia">
-<meta property="og:locale" content="zh">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Luke&#39;s Wikipedia">
     
@@ -84,14 +84,14 @@
             <div id="search-form-wrap">
 
     <form class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
         <button type="submit" class="search-form-submit"></button>
     </form>
     <div class="ins-search">
     <div class="ins-search-mask"></div>
     <div class="ins-search-container">
         <div class="ins-input-wrapper">
-            <input type="text" class="ins-search-input" placeholder="Type something...">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
             <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
         </div>
         <div class="ins-section-wrapper">
@@ -103,11 +103,11 @@
 (function (window) {
     var INSIGHT_CONFIG = {
         TRANSLATION: {
-            POSTS: 'Posts',
-            PAGES: 'Pages',
-            CATEGORIES: 'Categories',
-            TAGS: 'Tags',
-            UNTITLED: '(Untitled)',
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
         },
         ROOT_URL: '/',
         CONTENT_URL: '/content.json',
@@ -137,7 +137,7 @@
                 <td>
                     
     <div class="search-form">
-        <input type="text" class="ins-search-input search-form-input" placeholder="Search">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
     </div>
 
                 </td>
@@ -157,16 +157,16 @@
             <h2 id="name">Luke</h2>
             <h3 id="title">Designer &amp; Programmer</h3>
             <span id="location"><i class="fa fa-map-marker"></i>Chengdu, China</span>
-            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">FOLLOW</a>
+            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">关注我</a>
         </div>
         <div class="article-info profile-block">
             <div class="article-info-block">
-                3
-                <span>posts</span>
+                6
+                <span>文章</span>
             </div>
             <div class="article-info-block">
-                2
-                <span>tags</span>
+                4
+                <span>标签</span>
             </div>
         </div>
         
@@ -213,7 +213,7 @@
         
     <div class="widget-wrap" id="categories">
         <h3 class="widget-title">
-            <span>categories</span>
+            <span>分类</span>
             &nbsp;
             <a id="allExpand" href="#">
                 <i class="fa fa-angle-double-down fa-2x"></i>
@@ -223,6 +223,15 @@
         
         
          <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Elasticsearch
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/Elasticsearch快照备份/">Elasticsearch快照备份</a></li>  </ul> 
+                    </li> 
+                    
                     <li class="directory">
                         <a href="#" data-role="directory">
                             <i class="fa fa-folder"></i>
@@ -265,9 +274,18 @@
                         </a>
                          <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/centos搭建本地repo源/">centos搭建局域网repo源</a></li>  </ul> 
                     </li> 
-                     </ul> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            ansible
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/setup模块过滤多个返回参数/">setup模块过滤多个返回参数</a></li>  </ul> 
                     </li> 
                      </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">Welcome to luke's wiki site!</a></li>  </ul> 
     </div>
     <script>
         $(document).ready(function() {
@@ -339,7 +357,7 @@
 </aside>
             
             <section id="main">
-        <article id="pages-进军深度学习" class="article article-type-pages" itemscope="" itemprop="blogPost">
+    <article id="post-index" class="article article-type-post" itemscope="" itemprop="blogPost">
     <div class="article-inner">
         
         
@@ -347,22 +365,12 @@
                 
                     <div class="article-meta">
                         
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/文笔随记/">文笔随记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/文笔随记/向往/">向往</a>
-    </div>
-
                         
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/python/">python</a>
-    </div>
-
                         
     <div class="article-date">
         <i class="fa fa-calendar"></i>
-        <a href="/wiki/进军深度学习/">
-            <time datetime="2018-02-26T14:11:01.614Z" itemprop="datePublished">2018-02-26</time>
+        <a href="/wiki/index/">
+            <time datetime="2018-07-28T14:17:42.534Z" itemprop="datePublished">2018-07-28</time>
         </a>
     </div>
 
@@ -373,8 +381,8 @@
                 
                 
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/进军深度学习/">准备开始 深度学习</a>
+        <h1 class="article-title" itemprop="name">
+            Welcome to luke&#39;s wiki site!
         </h1>
     
 
@@ -385,129 +393,27 @@
         
         
             
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p><blockquote>
-<p>一直写了没有发出， 拖沓症真的挺严重。。。</p>
-</blockquote>
-</p><h2 id="进军深度学习课程"><a href="#进军深度学习课程" class="headerlink" title="进军深度学习课程"></a>进军深度学习课程</h2><p>近期看了一些关于人工智能系列的文章，对这种前沿的技术充满了兴趣，但是苦于上学时候没有好好学习😂，所以想补充一下数学基础知识。学习的过程中顺便温习了一下解方程</p>
-<h2 id="目前看的数学书籍"><a href="#目前看的数学书籍" class="headerlink" title="目前看的数学书籍"></a>目前看的数学书籍</h2><ul>
-<p>
-                
-            
         
         
-            </p></ul></div>   
-            <div class="article-more-link">
-                <a href="/wiki/进军深度学习/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
-
-
-
-
-
-    
-        <article id="pages-centos搭建本地repo源" class="article article-type-pages" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/运维记录/">运维记录</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/运维记录/Linux/">Linux</a>
-    </div>
-
-                        
-    <div class="article-tag">
-        <i class="fa fa-tag"></i>
-        <a class="tag-link" href="/tags/repo仓库/">repo仓库</a>
-    </div>
-
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/centos搭建本地repo源/">
-            <time datetime="2018-01-20T05:35:41.000Z" itemprop="datePublished">2018-01-20</time>
-        </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-                
-    
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/centos搭建本地repo源/">centos搭建局域网repo源</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><p>起初是因为有些时候需要安装的一些包总是在系统自带的repo仓库找不到，有些国外的源又很慢，自己本地都要下载很长时间，偶尔又有一些依赖缺失之类的，干脆就把自己工作环境中所需要的包存起来，自己建一个内网仓库，于是有了下面这篇文章。</p>
-<h2 id="依赖"><a href="#依赖" class="headerlink" title="依赖"></a>依赖</h2><ul>
-<li>安装httpd服务或者nginx服务。#省略</li>
+            <h2 id="导语"><a href="#导语" class="headerlink" title="导语"></a>导语</h2><p>这只是个人知识站点，主要用于记录平时一些知识碎片，同时也方便自己今后查阅，内容不限定，有时间就更新。</p>
+<p>大概理一下主要内容：</p>
+<ul>
+<li>平时学习前沿的技术，做个知识积累</li>
+<li>学习成果，开发的一些工具之类</li>
+<li>工作中踩过的坑，既然填坑了，那就铺条路出来</li>
+<li>生活中的琐碎心情</li>
+<li>推荐的书籍，阅读心得</li>
+<li>互联网资讯类，新鲜事儿</li>
+<li>电影音乐类，毕竟我爱电视剧，😁</li>
+<li>摄影类，美丽的事物赏心悦目</li>
 </ul>
-<h2 id="一些目录设定"><a href="#一些目录设定" class="headerlink" title="一些目录设定"></a>一些目录设定</h2><ul>
-<p>
-                
-            
-        
-        
-            </p></ul></div>   
-            <div class="article-more-link">
-                <a href="/wiki/centos搭建本地repo源/#more">Read More</a>
+<p>事情比较杂，但是主要是专心于技术，学习，提升自我。</p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>最后来张图，大家共勉。</p>
+<blockquote>
+<p>凛冬已至，还不赶紧逼自己一把。</p>
+</blockquote>
+<p><img src="https://i.imgur.com/8pydVpW.jpg" alt="夜王" title="夜王来了"></p>
+
             </div>
         
         <footer class="article-footer">
@@ -516,97 +422,33 @@
 </article>
 
 
-
-
-
-
     
-        <article id="post-写在第一篇文章的话" class="article article-type-post" itemscope="" itemprop="blogPost">
-    <div class="article-inner">
-        
-        
-            <header class="article-header">
-                
-                    <div class="article-meta">
-                        
-    <div class="article-category">
-    	<i class="fa fa-folder"></i>
-        <a class="article-category-link" href="/categories/文笔随记/">文笔随记</a><i class="fa fa-angle-right"></i><a class="article-category-link" href="/categories/文笔随记/心情/">心情</a>
-    </div>
-
-                        
-                        
-    <div class="article-date">
-        <i class="fa fa-calendar"></i>
-        <a href="/wiki/写在第一篇文章的话/">
-            <time datetime="2018-01-19T15:23:44.000Z" itemprop="datePublished">2018-01-19</time>
+<nav id="article-nav">
+    
+    
+        <a href="/wiki/Elasticsearch快照备份/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">Elasticsearch快照备份</div>
         </a>
-    </div>
-
-
-                        
-                        
-                    </div>
-                
-                
     
-        <h1 itemprop="name">
-            <a class="article-title" href="/wiki/写在第一篇文章的话/">写在第一篇文章的话</a>
-        </h1>
-    
-
-            </header>
-        
-        
-        <div class="article-entry" itemprop="articleBody">
-        
-        
-            
-                
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                    
-                    
-                
-                
-                    
-                    <p></p><p>博客开张了，The first blood还是要贡献一下，接触博客好多，今天算是第一次完全搭建属于自己的个人博客，也是无意间接触到GitHub Pages，觉得很方便，而且完美支持Markdown，就这么选好模板入坑了。</p>
-<h2 id="写在第一篇文章的话"><a href="#写在第一篇文章的话" class="headerlink" title="写在第一篇文章的话"></a>写在第一篇文章的话</h2><p>这个博客，主要是用于记录自己的学习过程，以及工作中所踩的一些新坑，包括自己脑子记不住的知识点(大家都懂的^_^)!</p>
-<p>其实偶尔也会有一些自己的心情体会发表一下，主要是吐槽啦~</p>
-<h2 id="为什么开博客"><a href="#为什么开博客" class="headerlink" title="为什么开博客"></a>为什么开博客</h2><ul>
-<li>希望养成良好的个人习惯</li>
-<p>
-                
-            
-        
-        
-            </p></ul></div>   
-            <div class="article-more-link">
-                <a href="/wiki/写在第一篇文章的话/#more">Read More</a>
-            </div>
-        
-        <footer class="article-footer">
-        </footer>
-    </div>
-</article>
-
+</nav>
 
 
 
 
 
     
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+
+
 </section>
         </div>
         <footer id="footer">
