@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://finsos.github.io/"/>
-  <updated>2018-10-31T13:25:27.521Z</updated>
+  <updated>2018-10-31T13:25:22.306Z</updated>
   <id>http://finsos.github.io/</id>
   
   <author>
@@ -15,34 +15,6 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>vsftp的一个问题</title>
-    <link href="http://finsos.github.io/wiki/vsftp%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98/"/>
-    <id>http://finsos.github.io/wiki/vsftp的一个问题/</id>
-    <published>2018-10-30T16:00:00.000Z</published>
-    <updated>2018-10-31T13:25:27.521Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>使用pasv模式的时候不能打开port模式的开关，即<code>pasv_enable=YES port_enable=NO</code>，否则就算设置了<code>pasv_min_port和pasv_max_port</code>也不起作用。今天在开启防火墙的时候发现怎么都连不上，原来是数据传输的时候端口并不是预设的端口范围，导致发了syn被防火墙丢弃了。</li></ul><ul><li>启用TLS,直接修改vsftpd.conf，添加如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#启用加密</span><br><span class="line">ssl_enable=YES</span><br><span class="line">#使用 TSL v1 加密协议</span><br><span class="line">ssl_tlsv1=YES</span><br><span class="line">#使用eof标志表示上传完成</span><br><span class="line">strict_ssl_read_eof=YES</span><br><span class="line">#证书路径</span><br><span class="line">rsa_cert_file=/etc/letsencrypt/live/itnmg.net/fullchain.pem</span><br><span class="line">#证书私钥路径</span><br><span class="line">rsa_private_key_file=/etc/letsencrypt/live/itnmg.net/privkey.pem</span><br><span class="line">#指定加密算法, 如果不指定, 默认为 DES-CBC3-SHA</span><br><span class="line">ssl_ciphers=ECDHE-RSA-AES128-GCM-SHA256</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;使用pasv模式的时候不能打开port模式的开关，即&lt;code&gt;pasv_enable=YES port_enable=NO&lt;/code&gt;，否则就算设置了&lt;code&gt;pasv_min_port和pasv_max_port&lt;/code&gt;也不起作用。今天在开启防火墙
-      
-    
-    </summary>
-    
-      <category term="运维记录" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="FTP" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/FTP/"/>
-    
-    
-      <category term="vsftp" scheme="http://finsos.github.io/tags/vsftp/"/>
-    
-  </entry>
   
   <entry>
     <title>GIT轻量级管理服务搭建</title>
@@ -69,6 +41,34 @@
     
     
       <category term="git管理" scheme="http://finsos.github.io/tags/git%E7%AE%A1%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>vsftp的一个问题</title>
+    <link href="http://finsos.github.io/wiki/vsftp%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98/"/>
+    <id>http://finsos.github.io/wiki/vsftp的一个问题/</id>
+    <published>2018-10-30T16:00:00.000Z</published>
+    <updated>2018-10-31T13:25:27.521Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>使用pasv模式的时候不能打开port模式的开关，即<code>pasv_enable=YES port_enable=NO</code>，否则就算设置了<code>pasv_min_port和pasv_max_port</code>也不起作用。今天在开启防火墙的时候发现怎么都连不上，原来是数据传输的时候端口并不是预设的端口范围，导致发了syn被防火墙丢弃了。</li></ul><ul><li>启用TLS,直接修改vsftpd.conf，添加如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#启用加密</span><br><span class="line">ssl_enable=YES</span><br><span class="line">#使用 TSL v1 加密协议</span><br><span class="line">ssl_tlsv1=YES</span><br><span class="line">#使用eof标志表示上传完成</span><br><span class="line">strict_ssl_read_eof=YES</span><br><span class="line">#证书路径</span><br><span class="line">rsa_cert_file=/etc/letsencrypt/live/itnmg.net/fullchain.pem</span><br><span class="line">#证书私钥路径</span><br><span class="line">rsa_private_key_file=/etc/letsencrypt/live/itnmg.net/privkey.pem</span><br><span class="line">#指定加密算法, 如果不指定, 默认为 DES-CBC3-SHA</span><br><span class="line">ssl_ciphers=ECDHE-RSA-AES128-GCM-SHA256</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;使用pasv模式的时候不能打开port模式的开关，即&lt;code&gt;pasv_enable=YES port_enable=NO&lt;/code&gt;，否则就算设置了&lt;code&gt;pasv_min_port和pasv_max_port&lt;/code&gt;也不起作用。今天在开启防火墙
+      
+    
+    </summary>
+    
+      <category term="运维记录" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="FTP" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/FTP/"/>
+    
+    
+      <category term="vsftp" scheme="http://finsos.github.io/tags/vsftp/"/>
     
   </entry>
   
