@@ -1,0 +1,611 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="utf-8">
+    
+    <title>GIT轻量级管理服务搭建 | Luke&#39;s Wikipedia</title>
+    
+    
+        <meta name="keywords" content="git管理">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="系统版本：CentOS release 6.4 (Final)系统配置：CPU2核 内存2G 硬盘15G  有git的需求，但是又觉得gitlab太重耗资源，于是决定找个轻量级的git带web来管理，找来找去搞了会儿cgit，但是不带权限控制语法高亮也不是我喜欢的，所有放弃。后面利用了git，gitolite，gitweb三剑客+nginx搭建了，于是有了下面的文档。 安装git 这个不用多说大">
+<meta name="keywords" content="git管理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="GIT轻量级管理服务搭建">
+<meta property="og:url" content="http://finsos.github.io/wiki/git轻量级管理服务搭建/index.html">
+<meta property="og:site_name" content="Luke&#39;s Wikipedia">
+<meta property="og:description" content="系统版本：CentOS release 6.4 (Final)系统配置：CPU2核 内存2G 硬盘15G  有git的需求，但是又觉得gitlab太重耗资源，于是决定找个轻量级的git带web来管理，找来找去搞了会儿cgit，但是不带权限控制语法高亮也不是我喜欢的，所有放弃。后面利用了git，gitolite，gitweb三剑客+nginx搭建了，于是有了下面的文档。 安装git 这个不用多说大">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2018-10-31T13:25:22.306Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="GIT轻量级管理服务搭建">
+<meta name="twitter:description" content="系统版本：CentOS release 6.4 (Final)系统配置：CPU2核 内存2G 硬盘15G  有git的需求，但是又觉得gitlab太重耗资源，于是决定找个轻量级的git带web来管理，找来找去搞了会儿cgit，但是不带权限控制语法高亮也不是我喜欢的，所有放弃。后面利用了git，gitolite，gitweb三剑客+nginx搭建了，于是有了下面的文档。 安装git 这个不用多说大">
+    
+
+    
+        <link rel="alternate" href="/atom.xml" title="Luke&#39;s Wikipedia" type="application/atom+xml">
+    
+
+    
+        <link rel="icon" href="/css/images/favicon.ico">
+    
+
+    <link rel="stylesheet" href="/libs/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/libs/open-sans/styles.css">
+    <link rel="stylesheet" href="/libs/source-code-pro/styles.css">
+
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="/libs/jquery/2.1.3/jquery.min.js"></script>
+    <script src="/libs/jquery/plugins/cookie/1.4.1/jquery.cookie.js"></script>
+    
+    
+        <link rel="stylesheet" href="/libs/lightgallery/css/lightgallery.min.css">
+    
+    
+        <link rel="stylesheet" href="/libs/justified-gallery/justifiedGallery.min.css">
+    
+    
+    
+    
+
+
+    
+</head>
+</html>
+<body>
+    <div id="container">
+        <header id="header">
+    <div id="header-main" class="header-inner">
+        <div class="outer">
+            <a href="/" id="logo">
+                <i class="logo"></i>
+                <span class="site-title">Luke&#39;s Wikipedia</span>
+            </a>
+            <nav id="main-nav">
+                
+                    <a class="main-nav-link" href="/">首页</a>
+                
+                    <a class="main-nav-link" href="/archives">归档</a>
+                
+                    <a class="main-nav-link" href="/categories">分类</a>
+                
+                    <a class="main-nav-link" href="/tags">标签</a>
+                
+                    <a class="main-nav-link" href="/about">关于</a>
+                
+            </nav>
+            
+                
+                <nav id="sub-nav">
+                    <div class="profile" id="profile-nav">
+                        <a id="profile-anchor" href="javascript:;">
+                            <img class="avatar" src="https://www.gravatar.com/avatar/6896797020dd07f16cdf951f5cd1141b">
+                            <i class="fa fa-caret-down"></i>
+                        </a>
+                    </div>
+                </nav>
+            
+            <div id="search-form-wrap">
+
+    <form class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+        <button type="submit" class="search-form-submit"></button>
+    </form>
+    <div class="ins-search">
+    <div class="ins-search-mask"></div>
+    <div class="ins-search-container">
+        <div class="ins-input-wrapper">
+            <input type="text" class="ins-search-input" placeholder="想要查找什么...">
+            <span class="ins-close ins-selectable"><i class="fa fa-times-circle"></i></span>
+        </div>
+        <div class="ins-section-wrapper">
+            <div class="ins-section-container"></div>
+        </div>
+    </div>
+</div>
+<script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+
+</div>
+        </div>
+    </div>
+    <div id="main-nav-mobile" class="header-sub header-inner">
+        <table class="menu outer">
+            <tr>
+                
+                    <td><a class="main-nav-link" href="/">首页</a></td>
+                
+                    <td><a class="main-nav-link" href="/archives">归档</a></td>
+                
+                    <td><a class="main-nav-link" href="/categories">分类</a></td>
+                
+                    <td><a class="main-nav-link" href="/tags">标签</a></td>
+                
+                    <td><a class="main-nav-link" href="/about">关于</a></td>
+                
+                <td>
+                    
+    <div class="search-form">
+        <input type="text" class="ins-search-input search-form-input" placeholder="搜索">
+    </div>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</header>
+
+        <div class="outer">
+            
+                
+
+<aside id="profile">
+    <div class="inner profile-inner">
+        <div class="base-info profile-block">
+            <img id="avatar" src="https://www.gravatar.com/avatar/6896797020dd07f16cdf951f5cd1141b?s=128">
+            <h2 id="name">Luke</h2>
+            <h3 id="title">Designer &amp; Programmer</h3>
+            <span id="location"><i class="fa fa-map-marker"></i>Chengdu, China</span>
+            <a id="follow" target="_blank" href="https://github.com/finsos/" rel="external nofollow noopener noreferrer">关注我</a>
+        </div>
+        <div class="article-info profile-block">
+            <div class="article-info-block">
+                10
+                <span>文章</span>
+            </div>
+            <div class="article-info-block">
+                6
+                <span>标签</span>
+            </div>
+        </div>
+        
+        <div class="profile-block social-links">
+            <table>
+                <tr>
+                    
+                    
+                    <td>
+                        <a href="https://github.com/finsos/finsos.github.io" target="_blank" title="github" class="tooltip" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-github"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://stackoverflow.com/users/10147102/luke?tab=profile" target="_blank" title="stack-overflow" class="tooltip" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-stack-overflow"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="http://codepen.io/winver/" target="_blank" title="codepen" class="tooltip" rel="external nofollow noopener noreferrer">
+                            <i class="fa fa-codepen"></i>
+                        </a>
+                    </td>
+                    
+                    <td>
+                        <a href="/atom.xml" target="_blank" title="rss" class="tooltip">
+                            <i class="fa fa-rss"></i>
+                        </a>
+                    </td>
+                    
+                </tr>
+            </table>
+        </div>
+        
+    </div>
+</aside>
+
+            
+            
+                <aside id="sidebar">
+   
+        
+    <div class="widget-wrap" id="categories">
+        <h3 class="widget-title">
+            <span>分类</span>
+            &nbsp;
+            <a id="allExpand" href="#">
+                <i class="fa fa-angle-double-down fa-2x"></i>
+            </a>
+        </h3>
+        
+        
+        
+         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Elasticsearch
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/Elasticsearch快照备份/">Elasticsearch快照备份</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory open">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder-open"></i>
+                            &nbsp;
+                            Git
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file active"><a href="/wiki/git轻量级管理服务搭建/">GIT轻量级管理服务搭建</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            文笔随记
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            向往
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/进军深度学习/">准备开始 深度学习</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            心情
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/写在第一篇文章的话/">写在第一篇文章的话</a></li>  </ul> 
+                    </li> 
+                     </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            运维记录
+                        </a>
+                         <ul class="unstyled" id="tree"> 
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            FTP
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/vsftp的一个问题/">vsftp的一个问题</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Linux
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/centos搭建本地repo源/">centos搭建局域网repo源</a></li>  </ul> 
+                    </li> 
+                    
+                    <li class="directory">
+                        <a href="#" data-role="directory">
+                            <i class="fa fa-folder"></i>
+                            &nbsp;
+                            Web服务
+                        </a>
+                         <ul class="unstyled" id="tree">  <li class="file"><a href="/wiki/记一次SSL证书问题/">记一次SSL证书问题</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/一句话命令/">一句话命令</a></li>  </ul> 
+                    </li> 
+                     <li class="file"><a href="/wiki/index/">Welcome to luke's wiki site!</a></li>  <li class="file"><a href="/wiki/好听的歌单/"></a></li>  </ul> 
+    </div>
+    <script>
+        $(document).ready(function() {
+            var iconFolderOpenClass  = 'fa-folder-open';
+            var iconFolderCloseClass = 'fa-folder';
+            var iconAllExpandClass = 'fa-angle-double-down';
+            var iconAllPackClass = 'fa-angle-double-up';
+            // Handle directory-tree expansion:
+            // 左键单独展开目录
+            $(document).on('click', '#categories a[data-role="directory"]', function (event) {
+                event.preventDefault();
+
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var subtree = $(this).siblings('ul');
+                icon.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if (expanded) {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideUp({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderCloseClass);
+                } else {
+                    if (typeof subtree != 'undefined') {
+                        subtree.slideDown({ duration: 100 });
+                    }
+                    icon.addClass(iconFolderOpenClass);
+                }
+            });
+            // 右键展开下属所有目录
+            $('#categories a[data-role="directory"]').bind("contextmenu", function(event){
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconFolderOpenClass);
+                var listNode = $(this).siblings('ul');
+                var subtrees = $.merge(listNode.find('li ul'), listNode);
+                var icons = $.merge(listNode.find('.fa'), icon);
+                icons.removeClass(iconFolderOpenClass).removeClass(iconFolderCloseClass);
+                if(expanded) {
+                    subtrees.slideUp({ duration: 100 });
+                    icons.addClass(iconFolderCloseClass);
+                } else {
+                    subtrees.slideDown({ duration: 100 });
+                    icons.addClass(iconFolderOpenClass);
+                }
+            })
+            // 展开关闭所有目录按钮
+            $(document).on('click', '#allExpand', function (event) {
+                event.preventDefault();
+                
+                var icon = $(this).children('.fa');
+                var expanded = icon.hasClass(iconAllExpandClass);
+                icon.removeClass(iconAllExpandClass).removeClass(iconAllPackClass);
+                if(expanded) {
+                    $('#sidebar .fa.fa-folder').removeClass('fa-folder').addClass('fa-folder-open')
+                    $('#categories li ul').slideDown({ duration: 100 });
+                    icon.addClass(iconAllPackClass);
+                } else {
+                    $('#sidebar .fa.fa-folder-open').removeClass('fa-folder-open').addClass('fa-folder')
+                    $('#categories li ul').slideUp({ duration: 100 });
+                    icon.addClass(iconAllExpandClass);
+                }
+            });  
+        });
+    </script>
+
+    
+    <div id="toTop" class="fa fa-angle-up"></div>
+</aside>
+            
+            <section id="main"><article id="pages-git轻量级管理服务搭建" class="article article-type-pages" itemscope="" itemprop="blogPost">
+    <div class="article-inner">
+        
+        
+            <header class="article-header">
+                
+                    <div class="article-meta">
+                        
+    <div class="article-category">
+    	<i class="fa fa-folder"></i>
+        <a class="article-category-link" href="/categories/Git/">Git</a>
+    </div>
+
+                        
+    <div class="article-tag">
+        <i class="fa fa-tag"></i>
+        <a class="tag-link" href="/tags/git管理/">git管理</a>
+    </div>
+
+                        
+    <div class="article-date">
+        <i class="fa fa-calendar"></i>
+        <a href="/wiki/git轻量级管理服务搭建/">
+            <time datetime="2018-10-30T16:00:00.000Z" itemprop="datePublished">2018-10-31</time>
+        </a>
+    </div>
+
+
+                        
+                        
+                    </div>
+                
+                
+    
+        <h1 class="article-title" itemprop="name">
+            GIT轻量级管理服务搭建
+        </h1>
+    
+
+            </header>
+        
+        
+        <div class="article-entry" itemprop="articleBody">
+        
+        
+            
+                <div id="toc" class="toc-article">
+                <strong class="toc-title">文章目录</strong>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#安装git"><span class="toc-number">1.</span> <span class="toc-text">安装git</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装gitolite"><span class="toc-number">2.</span> <span class="toc-text">安装gitolite</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#git服务器端操作"><span class="toc-number">2.0.1.</span> <span class="toc-text">git服务器端操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#git客户端操作"><span class="toc-number">2.0.2.</span> <span class="toc-text">git客户端操作</span></a></li></ol></li></ol><li class="toc-item toc-level-2"><a class="toc-link" href="#安装gitweb"><span class="toc-number">3.</span> <span class="toc-text">安装gitweb</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#安装web服务器，这里选择Nginx"><span class="toc-number">4.</span> <span class="toc-text">安装web服务器，这里选择Nginx</span></a></li>
+                </div>
+            
+        
+        
+            <blockquote>
+<p>系统版本：CentOS release 6.4 (Final)<br>系统配置：CPU2核 内存2G 硬盘15G</p>
+</blockquote>
+<p>有git的需求，但是又觉得gitlab太重耗资源，于是决定找个轻量级的git带web来管理，找来找去搞了会儿cgit，但是不带权限控制语法高亮也不是我喜欢的，所有放弃。后面利用了git，gitolite，gitweb三剑客+nginx搭建了，于是有了下面的文档。</p>
+<h2 id="安装git"><a href="#安装git" class="headerlink" title="安装git"></a>安装git</h2><ul>
+<li>这个不用多说大家都会<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 直接yum装了</span><br><span class="line">yum -y install git</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>注意：1.7版本不支持语法高亮，建议升级到2.+</p>
+</blockquote>
+<ul>
+<li>接上面，好吧，这里再次踩坑了！<br>centos仓库自带的版本为1.7,因此我们要升级到2.+，这里使用编译安装：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"># 安装依赖</span><br><span class="line">yum install -y zlib-devel bzip2-devel openssl-devel ncurses-devel gcc perl-ExtUtils-MakeMaker package</span><br><span class="line"># 下载源码包，这里最新2.18</span><br><span class="line">wget https://mirrors.edge.kernel.org/pub/software/scm/git/git-2.18.0.tar.gz</span><br><span class="line"># 解压</span><br><span class="line">tar -zxvf git-2.18.0.tar.gz &amp;&amp; cd git-2.18.0</span><br><span class="line"># 编译安装</span><br><span class="line">./configure --prefix=/usr/local/git all</span><br><span class="line">make</span><br><span class="line">make install</span><br><span class="line"># 加环境变量</span><br><span class="line">echo &quot;export PATH=$PATH:/usr/local/git/bin&quot; &gt; /etc/profile.d/git.sh</span><br><span class="line">source /etc/profile.d/git.sh</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="安装gitolite"><a href="#安装gitolite" class="headerlink" title="安装gitolite"></a>安装gitolite</h2><p>官方的安装介绍，很简单</p>
+<h4 id="git服务器端操作"><a href="#git服务器端操作" class="headerlink" title="git服务器端操作"></a>git服务器端操作</h4><ul>
+<li>切换到git用户目录下去操作<br><code>su - git</code><br><code>mkdir -p ~/bin</code></li>
+<li>克隆仓库<br><code>git clone https://github.com/sitaramc/gitolite</code></li>
+<li>安装<br>这时会在当前目录下生成repositories目录，其中gitolite-admin.git就是我们主要的权限管理仓库<br><code>gitolite/install -ln ~/bin</code></li>
+<li>初始用户<br>这里因为是初始第一个用户，所以是管理员，username.pub是客户端的公钥<br><code>gitolite setup -pk username.pub</code><blockquote>
+<p>！注意：不能初始化管理员在git server上，即，在server上clone权限管理仓库，然后再push到server</p>
+</blockquote>
+</li>
+</ul>
+<h4 id="git客户端操作"><a href="#git客户端操作" class="headerlink" title="git客户端操作"></a>git客户端操作</h4><ul>
+<li>生成一对密钥<br><code>ssh-keygen -t rsa -b 2048 #一路回车空密码</code></li>
+<li>克隆权限管理仓库<br>这里即使用server上初始的管理员机器<br><code>git clone git@gitserver.domain:gitolite-admin.git</code></li>
+<li>配置权限管理<br><code>vim gitolite-admin/conf/gitolite.conf</code></li>
+<li>权限管理介绍</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"># 关键字</span><br><span class="line">C    代表创建，仅在通配符版本库授权是使用，用于指定谁可以创建与通配符匹配的版本库</span><br><span class="line">R    RW    RW+    R为只读，RW为读写权限，RW+代表除了拥有读写权限，还可以强制执行推送</span><br><span class="line">RWC    RW+C    </span><br><span class="line">RWD    RW+D    D代表允许删除和正则匹配的引用</span><br><span class="line">RWCD  RW+CD</span><br><span class="line"></span><br><span class="line"># 定义组，用户</span><br><span class="line">@all    所有组、所有用户、所有版本库</span><br><span class="line">@administrator = admin kid   定义一个administrator组并将用户admin，kid加入该组</span><br><span class="line">@develop = dev01 dev02</span><br><span class="line">@testing = test01 test02</span><br><span class="line"></span><br><span class="line"># 传统模式的引用授权</span><br><span class="line">repo    test/repo1</span><br><span class="line">        RW+ = @administrators  允许管理员组任意读写，强制推送</span><br><span class="line">        RW master refs/heads/feature/ = @develop  除了对master和refs/heads/feature/开头的引用具有读写权限外，实际上可以读取所有引用。这是因为读取操作授权阶段无法获知引用。 </span><br><span class="line">        R = @testing  对版本库拥有只读授权</span><br><span class="line"># 扩展模式的引用授权</span><br><span class="line">扩展模式的引用授权，指的是该版本库的授权指令出现了下列授权关键字中的一个或多个：RWC、RWD、RWCD、RW+C、RW+D、RW+CD，将分支的创建权限和删除权限从读写权限中分离出来，从而可对分支进行更为精细的权限控制。</span><br><span class="line">repo    test/repo2</span><br><span class="line">        RW+CD = @administrators</span><br><span class="line">        RW+C  = @develop</span><br><span class="line">        RW    = @testing</span><br><span class="line"># 以NAME/开头的引用</span><br><span class="line">在授权文件中，如果一个版本库的授权指令中的正则引用字段出现了以NAME/开头的引用，则表明该授权指令是针对路径进行的写授权，并且该版本库要进行基于路径的写授权判断。</span><br><span class="line">repo    foo</span><br><span class="line">    	RW        = @junior_devs @senior_devs   两个用户组均可以读写该版本库所有文件</span><br><span class="line">    	RW /NAME/ = @senior_devs		        只允许高级开发读写特定目录</span><br><span class="line">    	-  /NAME/Makefile = @junior_devs        没有访问特定目录Makefile的权限</span><br><span class="line">    	RW NAME/  = @junior_devs                允许读写特定路径的所有文件</span><br><span class="line"></span><br><span class="line"># 以VREF/开头的引用</span><br><span class="line">按照DAY，Hour时间限制: VREF/Hour/NN</span><br><span class="line">“NN” can be between 00 to 23</span><br><span class="line">repo bar</span><br><span class="line">    RW+                         =   @all</span><br><span class="line">    -   VREF/Hour/09            =   @junior-devs</span><br><span class="line">    -   VREF/Hour/1[0-9]        =   @junior-devs</span><br><span class="line">    -   VREF/Hour/2[0-9]        =   @junior-devs</span><br><span class="line"></span><br><span class="line">按照来源地址进行限制</span><br><span class="line">repo foo</span><br><span class="line">    RW+ VREF/FROM/192.168.48.0/23   =   @junior-devs</span><br><span class="line">    -   VREF/FROM                   =   @junior-devs</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>文档引用：<br><a href="http://gitolite.com/gitolite/cookbook/#example-vrefs" rel="external nofollow noopener noreferrer" target="_blank">http://gitolite.com/gitolite/cookbook/#example-vrefs</a><br><a href="https://blog.csdn.net/Rebel_Yangke/article/details/51554499" rel="external nofollow noopener noreferrer" target="_blank">https://blog.csdn.net/Rebel_Yangke/article/details/51554499</a></p>
+</blockquote>
+<ul>
+<li>添加一个用户<br><code>即将用户公钥添加到gitolite-admin/keydir，命名规则：username.pub</code></li>
+<li>提交到git server，提交后才会生效<br><code>git add -A</code><br><code>git commit -a -m &quot;Add user msg&quot;</code><br><code>git push</code><blockquote>
+<p>！注意：不能直接去改git server上的文件，必须经过提交生成，eat dogs food.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="安装gitweb"><a href="#安装gitweb" class="headerlink" title="安装gitweb"></a>安装gitweb</h2><ul>
+<li>安装spawn-fcgi、fcgi-devel、highlight<br><code>yum -y install spawn-fcgi fcgi-devel highlight</code></li>
+<li><p>安装fastcgi-wrapper</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">git clone https://github.com/gnosek/fcgiwrap.git</span><br><span class="line">cd fcgiwrap</span><br><span class="line">autoreconf -i</span><br><span class="line">./configure</span><br><span class="line">make</span><br><span class="line">make install</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>启动fastcgi-wrapper<br><code>spawn-fcgi -f /usr/local/sbin/fcgiwrap -a 127.0.0.1 -p 10086</code></p>
+</li>
+<li>安装gitweb<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># yum安装</span><br><span class="line">yum -y install gitweb</span><br><span class="line"># 推荐手动安装,这里同样安装2.18版本，gitweb和git在一个包里</span><br><span class="line">cd git-2.18.0</span><br><span class="line">make GITWEB_PROJECTROOT=&quot;/opt/git&quot; prefix=/usr install-gitweb</span><br><span class="line"># 安装目录在$&#123;PREFIX&#125;/share/gitweb</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<blockquote>
+<p>注意：1.7版本不支持语法高亮，建议升级到2.+</p>
+<ul>
+<li>gitweb配置<br>创建<code>/etc/gitweb.conf</code>如果没有的话,配置示例如下：<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># 配置仓库路径</span><br><span class="line">$projectroot = &quot;/home/git/repositories&quot;;</span><br><span class="line"># 配置web需要展示的仓库</span><br><span class="line">$projects_list = &quot;/home/git/projects.list&quot;;</span><br><span class="line">$strict_export = 1;</span><br><span class="line"># 下面就是网站静态文件的设置, / 代表站点根目录</span><br><span class="line"># stylesheet to use</span><br><span class="line">@stylesheets = (&quot;/gitweb.css&quot;);</span><br><span class="line"># javascript code for gitweb</span><br><span class="line">$javascript = &quot;/gitweb.js&quot;;</span><br><span class="line"># logo to use</span><br><span class="line">$logo = &quot;/git-logo.png&quot;;</span><br><span class="line"># the &apos;favicon&apos;</span><br><span class="line">$favicon = &quot;/git-favicon.png&quot;;</span><br><span class="line"># 配置clone的仓库地址，http和ssh</span><br><span class="line">@git_base_url_list = qw(git://git.finsos.com</span><br><span class="line">                        ssh://git.finsos.com/home/git/repositories);</span><br><span class="line"># 显示修改后的最后提交，开启</span><br><span class="line">$feature&#123;&apos;blame&apos;&#125;&#123;&apos;default&apos;&#125; = [1];</span><br><span class="line">$feature&#123;&apos;blame&apos;&#125;&#123;&apos;override&apos;&#125; = 1;</span><br><span class="line"># 关闭快照压缩存档</span><br><span class="line">$feature&#123;&apos;snapshot&apos;&#125;&#123;&apos;default&apos;&#125; = [&apos;zip&apos;, &apos;tgz&apos;];</span><br><span class="line">$feature&#123;&apos;snapshot&apos;&#125;&#123;&apos;override&apos;&#125; = 1;</span><br><span class="line"># 开启语法高亮,1.8+版本才支持</span><br><span class="line">$feature&#123;&apos;highlight&apos;&#125;&#123;&apos;default&apos;&#125; = [1];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>资料：<br><a href="https://mirrors.edge.kernel.org/pub/software/scm/git/docs/gitweb.conf.html" rel="external nofollow noopener noreferrer" target="_blank">https://mirrors.edge.kernel.org/pub/software/scm/git/docs/gitweb.conf.html</a><br><a href="https://git.wiki.kernel.org/index.php/Gitweb" rel="external nofollow noopener noreferrer" target="_blank">https://git.wiki.kernel.org/index.php/Gitweb</a></p>
+</blockquote>
+<ul>
+<li>美化gitweb,安装gitweb-theme<br><code>git clone https://github.com/kogakure/gitweb-theme.git</code><ul>
+<li>包里面提供了setup安装脚本<br><code>./setup -vi --install</code></li>
+<li>然并卵，直接把XXX.png和XXX.css拷贝到网站目录下就OK<br><code>\cp -af gitweb-theme/*.{css,png} /var/www/git/</code></li>
+</ul>
+</li>
+</ul>
+<h2 id="安装web服务器，这里选择Nginx"><a href="#安装web服务器，这里选择Nginx" class="headerlink" title="安装web服务器，这里选择Nginx"></a>安装web服务器，这里选择Nginx</h2><ul>
+<li><p>nginx信息</p>
+<blockquote>
+<p>版本：nginx/1.13.8<br>参数：–prefix=/usr/local/nginx –pid-path=/var/run/nginx/nginx.pid –with-threads –with-http_ssl_module –with-http_v2_module –with-http_realip_module –with-http_addition_module –with-http_sub_module –with-http_stub_status_module –with-pcre –with-stream=dynamic –add-dynamic-module=../echo-nginx-module-0.61/</p>
+</blockquote>
+</li>
+<li><p>安装<br>编译安装或者yum安装都行，这里就不写了</p>
+</li>
+<li><p>用htpasswd生成个密码配置站点用<br><code>htpasswd -cmds .password username</code></p>
+</li>
+<li><p>git站点配置示例</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name git.domain.com;</span><br><span class="line">    access_log logs/git.domain.access.log  main;</span><br><span class="line">    error_log logs/git.domain.error.log  warn;</span><br><span class="line">    root /var/www/git;</span><br><span class="line">    # HTTP Basic配置</span><br><span class="line">    auth_basic  &quot;Git Server On domain.com&quot;;</span><br><span class="line">    auth_basic_user_file  conf/.password;</span><br><span class="line">    location ~* ^.+\.(css|png|ico|js)$ &#123;</span><br><span class="line">            expires 30d;</span><br><span class="line">    &#125;</span><br><span class="line">    location / &#123;</span><br><span class="line">            index gitweb.cgi;</span><br><span class="line">            fastcgi_param SCRIPT_FILENAME $document_root/gitweb.cgi;</span><br><span class="line">            fastcgi_pass 127.0.0.1:10086;</span><br><span class="line">            fastcgi_param HTTP_HOST $server_name;</span><br><span class="line">            fastcgi_param PATH_INFO $uri;</span><br><span class="line">            fastcgi_param QUERY_INFO $uri;</span><br><span class="line">            include &quot;fastcgi_params&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>附一个nginx的服务管理脚本</p>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"># nginx - this script starts and stops the nginx daemon</span><br><span class="line"># chkconfig:   - 85 15</span><br><span class="line"># description:  Nginx is an HTTP(S) server, HTTP(S) reverse \</span><br><span class="line">#               proxy and IMAP/POP3 proxy server</span><br><span class="line"># processname: nginx</span><br><span class="line"># config:      /etc/nginx/nginx.conf</span><br><span class="line"># config:      /etc/sysconfig/nginx</span><br><span class="line"># pidfile:     /var/run/nginx.pid</span><br><span class="line"></span><br><span class="line"># Source function library.</span><br><span class="line">. /etc/rc.d/init.d/functions</span><br><span class="line"></span><br><span class="line"># Source networking configuration.</span><br><span class="line">. /etc/sysconfig/network</span><br><span class="line"></span><br><span class="line"># Check that networking is up.</span><br><span class="line">[ &quot;$NETWORKING&quot; = &quot;no&quot; ] &amp;&amp; exit 0</span><br><span class="line"></span><br><span class="line">nginx=&quot;/usr/local/nginx/sbin/nginx&quot;</span><br><span class="line">prog=$(basename $nginx)</span><br><span class="line"></span><br><span class="line">NGINX_CONF_FILE=&quot;/usr/local/nginx/conf/nginx.conf&quot;</span><br><span class="line"></span><br><span class="line">[ -f /etc/sysconfig/nginx ] &amp;&amp; . /etc/sysconfig/nginx</span><br><span class="line"></span><br><span class="line">lockfile=/var/lock/subsys/nginx</span><br><span class="line"></span><br><span class="line">make_dirs() &#123;</span><br><span class="line">   # make required directories</span><br><span class="line">   user=`nginx -V 2&gt;&amp;1 | grep &quot;configure arguments:&quot; | sed &apos;s/[^*]*--user=\([^ ]*\).*/\1/g&apos; -`</span><br><span class="line">   options=`$nginx -V 2&gt;&amp;1 | grep &apos;configure arguments:&apos;`</span><br><span class="line">   for opt in $options; do</span><br><span class="line">       if [ `echo $opt | grep &apos;.*-temp-path&apos;` ]; then</span><br><span class="line">           value=`echo $opt | cut -d &quot;=&quot; -f 2`</span><br><span class="line">           if [ ! -d &quot;$value&quot; ]; then</span><br><span class="line">               # echo &quot;creating&quot; $value</span><br><span class="line">               mkdir -p $value &amp;&amp; chown -R $user $value</span><br><span class="line">           fi</span><br><span class="line">       fi</span><br><span class="line">   done</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">start() &#123;</span><br><span class="line">    [ -x $nginx ] || exit 5</span><br><span class="line">    [ -f $NGINX_CONF_FILE ] || exit 6</span><br><span class="line">#    make_dirs</span><br><span class="line">    echo -n $&quot;Starting $prog: &quot;</span><br><span class="line">    daemon $nginx -c $NGINX_CONF_FILE</span><br><span class="line">    retval=$?</span><br><span class="line">    echo</span><br><span class="line">    [ $retval -eq 0 ] &amp;&amp; touch $lockfile</span><br><span class="line">    return $retval</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">stop() &#123;</span><br><span class="line">    echo -n $&quot;Stopping $prog: &quot;</span><br><span class="line">    killproc $prog -QUIT</span><br><span class="line">    retval=$?</span><br><span class="line">    echo</span><br><span class="line">    [ $retval -eq 0 ] &amp;&amp; rm -f $lockfile</span><br><span class="line">    return $retval</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">restart() &#123;</span><br><span class="line">    configtest || return $?</span><br><span class="line">    stop</span><br><span class="line">    sleep 1</span><br><span class="line">    start</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">reload() &#123;</span><br><span class="line">    configtest || return $?</span><br><span class="line">    echo -n $&quot;Reloading $prog: &quot;</span><br><span class="line">    killproc $nginx -HUP</span><br><span class="line">    RETVAL=$?</span><br><span class="line">    echo</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">force_reload() &#123;</span><br><span class="line">    restart</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">configtest() &#123;</span><br><span class="line">  $nginx -t -c $NGINX_CONF_FILE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rh_status() &#123;</span><br><span class="line">    status $prog</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">rh_status_q() &#123;</span><br><span class="line">    rh_status &gt;/dev/null 2&gt;&amp;1</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">case &quot;$1&quot; in</span><br><span class="line">    start)</span><br><span class="line">        rh_status_q &amp;&amp; exit 0</span><br><span class="line">        $1</span><br><span class="line">        ;;</span><br><span class="line">    stop)</span><br><span class="line">        rh_status_q || exit 0</span><br><span class="line">        $1</span><br><span class="line">        ;;</span><br><span class="line">    restart|configtest)</span><br><span class="line">        $1</span><br><span class="line">        ;;</span><br><span class="line">    reload)</span><br><span class="line">        rh_status_q || exit 7</span><br><span class="line">        $1</span><br><span class="line">        ;;</span><br><span class="line">    force-reload)</span><br><span class="line">        force_reload</span><br><span class="line">        ;;</span><br><span class="line">    status)</span><br><span class="line">        rh_status</span><br><span class="line">        ;;</span><br><span class="line">    condrestart|try-restart)</span><br><span class="line">        rh_status_q || exit 0</span><br><span class="line">            ;;</span><br><span class="line">    *)</span><br><span class="line">        echo $&quot;Usage: $0 &#123;start|stop|status|restart|condrestart|try-restart|reload|force-reload|configtest&#125;&quot;</span><br><span class="line">        exit 2</span><br><span class="line">esac</span><br></pre></td></tr></table></figure>
+
+            </div>
+        
+        <footer class="article-footer">
+        </footer>
+    </div>
+</article>
+
+
+    
+<nav id="article-nav">
+    
+    
+        <a href="/wiki/一句话命令/" id="article-nav-older" class="article-nav-link-wrap">
+            <strong class="article-nav-caption">下一篇</strong>
+            <div class="article-nav-title">一句话命令</div>
+        </a>
+    
+</nav>
+
+
+
+
+
+    
+    
+
+
+
+
+<!-- baidu url auto push script -->
+<script type="text/javascript">
+    !function(){var e=/([http|https]:\/\/[a-zA-Z0-9\_\.]+\.baidu\.com)/gi,r=window.location.href,o=document.referrer;if(!e.test(r)){var n="//api.share.baidu.com/s.gif";o?(n+="?r="+encodeURIComponent(document.referrer),r&&(n+="&l="+r)):r&&(n+="?l="+r);var t=new Image;t.src=n}}(window);
+</script>     
+</section>
+        </div>
+        <footer id="footer">
+    <div class="outer">
+        <div id="footer-info" class="inner">
+            Luke &copy; 2018 
+            <a rel="external nofollow noopener noreferrer" href="http://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/80x15.png"></a>
+            <br> Powered by <a href="http://hexo.io/" target="_blank" rel="external nofollow noopener noreferrer">Hexo</a>
+            
+        </div>
+    </div>
+</footer>
+
+        
+
+    
+        <script src="/libs/lightgallery/js/lightgallery.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-thumbnail.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-pager.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-autoplay.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-fullscreen.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-zoom.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-hash.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-share.min.js"></script>
+        <script src="/libs/lightgallery/js/lg-video.min.js"></script>
+    
+    
+        <script src="/libs/justified-gallery/jquery.justifiedGallery.min.js"></script>
+    
+    
+        <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true,
+            TeX: {
+                equationNumbers: {
+                  autoNumber: 'AMS'
+                }
+            }
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+
+
+
+<!-- Custom Scripts -->
+<script src="/js/main.js"></script>
+
+    </div>
+</body>
