@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://finsos.github.io/"/>
-  <updated>2018-10-31T13:25:22.306Z</updated>
+  <updated>2018-10-31T13:25:27.521Z</updated>
   <id>http://finsos.github.io/</id>
   
   <author>
@@ -15,6 +15,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vsftp的一个问题</title>
+    <link href="http://finsos.github.io/wiki/vsftp%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98/"/>
+    <id>http://finsos.github.io/wiki/vsftp的一个问题/</id>
+    <published>2018-10-30T16:00:00.000Z</published>
+    <updated>2018-10-31T13:25:27.521Z</updated>
+    
+    <content type="html"><![CDATA[<ul><li>使用pasv模式的时候不能打开port模式的开关，即<code>pasv_enable=YES port_enable=NO</code>，否则就算设置了<code>pasv_min_port和pasv_max_port</code>也不起作用。今天在开启防火墙的时候发现怎么都连不上，原来是数据传输的时候端口并不是预设的端口范围，导致发了syn被防火墙丢弃了。</li></ul><ul><li>启用TLS,直接修改vsftpd.conf，添加如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#启用加密</span><br><span class="line">ssl_enable=YES</span><br><span class="line">#使用 TSL v1 加密协议</span><br><span class="line">ssl_tlsv1=YES</span><br><span class="line">#使用eof标志表示上传完成</span><br><span class="line">strict_ssl_read_eof=YES</span><br><span class="line">#证书路径</span><br><span class="line">rsa_cert_file=/etc/letsencrypt/live/itnmg.net/fullchain.pem</span><br><span class="line">#证书私钥路径</span><br><span class="line">rsa_private_key_file=/etc/letsencrypt/live/itnmg.net/privkey.pem</span><br><span class="line">#指定加密算法, 如果不指定, 默认为 DES-CBC3-SHA</span><br><span class="line">ssl_ciphers=ECDHE-RSA-AES128-GCM-SHA256</span><br></pre></td></tr></table></figure></li></ul>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;ul&gt;
+&lt;li&gt;使用pasv模式的时候不能打开port模式的开关，即&lt;code&gt;pasv_enable=YES port_enable=NO&lt;/code&gt;，否则就算设置了&lt;code&gt;pasv_min_port和pasv_max_port&lt;/code&gt;也不起作用。今天在开启防火墙
+      
+    
+    </summary>
+    
+      <category term="运维记录" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/"/>
+    
+      <category term="FTP" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/FTP/"/>
+    
+    
+      <category term="vsftp" scheme="http://finsos.github.io/tags/vsftp/"/>
+    
+  </entry>
   
   <entry>
     <title>GIT轻量级管理服务搭建</title>
@@ -69,39 +97,11 @@
   </entry>
   
   <entry>
-    <title>vsftp的一个问题</title>
-    <link href="http://finsos.github.io/wiki/vsftp%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98/"/>
-    <id>http://finsos.github.io/wiki/vsftp的一个问题/</id>
-    <published>2018-10-30T16:00:00.000Z</published>
-    <updated>2018-10-31T13:25:27.521Z</updated>
-    
-    <content type="html"><![CDATA[<ul><li>使用pasv模式的时候不能打开port模式的开关，即<code>pasv_enable=YES port_enable=NO</code>，否则就算设置了<code>pasv_min_port和pasv_max_port</code>也不起作用。今天在开启防火墙的时候发现怎么都连不上，原来是数据传输的时候端口并不是预设的端口范围，导致发了syn被防火墙丢弃了。</li></ul><ul><li>启用TLS,直接修改vsftpd.conf，添加如下<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">#启用加密</span><br><span class="line">ssl_enable=YES</span><br><span class="line">#使用 TSL v1 加密协议</span><br><span class="line">ssl_tlsv1=YES</span><br><span class="line">#使用eof标志表示上传完成</span><br><span class="line">strict_ssl_read_eof=YES</span><br><span class="line">#证书路径</span><br><span class="line">rsa_cert_file=/etc/letsencrypt/live/itnmg.net/fullchain.pem</span><br><span class="line">#证书私钥路径</span><br><span class="line">rsa_private_key_file=/etc/letsencrypt/live/itnmg.net/privkey.pem</span><br><span class="line">#指定加密算法, 如果不指定, 默认为 DES-CBC3-SHA</span><br><span class="line">ssl_ciphers=ECDHE-RSA-AES128-GCM-SHA256</span><br></pre></td></tr></table></figure></li></ul>]]></content>
-    
-    <summary type="html">
-    
-      
-      
-        &lt;ul&gt;
-&lt;li&gt;使用pasv模式的时候不能打开port模式的开关，即&lt;code&gt;pasv_enable=YES port_enable=NO&lt;/code&gt;，否则就算设置了&lt;code&gt;pasv_min_port和pasv_max_port&lt;/code&gt;也不起作用。今天在开启防火墙
-      
-    
-    </summary>
-    
-      <category term="运维记录" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/"/>
-    
-      <category term="FTP" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/FTP/"/>
-    
-    
-      <category term="vsftp" scheme="http://finsos.github.io/tags/vsftp/"/>
-    
-  </entry>
-  
-  <entry>
     <title>记一次SSL证书问题</title>
     <link href="http://finsos.github.io/wiki/%E8%AE%B0%E4%B8%80%E6%AC%A1SSL%E8%AF%81%E4%B9%A6%E9%97%AE%E9%A2%98/"/>
     <id>http://finsos.github.io/wiki/记一次SSL证书问题/</id>
     <published>2018-10-30T16:00:00.000Z</published>
-    <updated>2018-10-31T13:25:35.882Z</updated>
+    <updated>2018-10-31T13:42:20.349Z</updated>
     
     <content type="html"><![CDATA[<h2 id="现象"><a href="#现象" class="headerlink" title="现象"></a>现象</h2><p>新上线一个服务，发现使用浏览器访问没有任何问题，微信IPhone可以访问，Android有些无法访问，排查了公网IP，微信版本，发现没有太多规律，线上排查日志发现连接已经上来了，但是到了nginx就没有日志了。后面排查下来就确定了是SSL证书链缺失导致。</p><h2 id="排查"><a href="#排查" class="headerlink" title="排查"></a>排查</h2><ul><li>使用openssl访问测试<br><code>openssl s_client -connect check.jmc.com.cn:443</code><br>报错如下：<blockquote><p>CONNECTED(00000003)<br>…<br>verify error:num=20:unable to get local issuer certificate<br>verify return:1<br>…<br>verify error:num=27:certificate not trusted<br>verify return:1<br>…<br>verify error:num=21:unable to verify the first certificate<br>verify return:1<br>…<br>Certificate chain<br>0 s:/C=CN/ST=Jiangxi/L=Nanchang/O=Jiangling Motors Co.,LTD/OU=IT/CN=*.jmc.com.cn<br> i:/C=US/O=DigiCert Inc/CN=DigiCert SHA2 Secure Server CA</p></blockquote></li></ul><p>解释： </p><ul><li>Certificate chain显示了证书链，最前面为序号，从0开始</li><li>s: Server CA，i: Information CA</li></ul><p>这里可以看出，证书链中只有一个证书信息，并没有显示Information CA的签发证书，由此可见是证书链缺失，导致TLS验证不过</p><h2 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h2><ul><li><p>由于客户那边提供的PFX格式的证书，所以需要分离出pem证书和key<br><code>openssl pkcs12 -in mycert.pfx -nokeys -out mycert.pem</code><br><code>openssl pkcs12 -in mycert.pfx -nocerts -nodes -out mycert.key</code></p></li><li><p>此时有两种办法：</p><ol><li>向证书供应商索取fullchain证书，即包含完整证书链的证书</li><li>去证书官方网站查找是否有Information CRT可供下载，如果有，就可以下载下来添加到我们的server证书中去</li></ol></li><li><p>这里用了第二种，在digicert官网下载CRT证书</p><blockquote><p><a href="https://www.digicert.com/digicert-root-certificates.htm" rel="external nofollow noopener noreferrer" target="_blank">https://www.digicert.com/digicert-root-certificates.htm</a><br>这里我们缺少的CN为 “DigiCert SHA2 Secure Server CA”，因此下载对应的CRT<br>CN也可通过浏览器访问时查询证书关系得知</p></blockquote></li><li><p>下载的CRT证书因为是DER格式的，所以我们还需要转换成PEM格式<br><code>openssl x509 -inform DER -in DigiCertSHA2SecureServerCA.crt -outform PEM -out informaition.pem</code></p></li><li><p>接下来只需要将两个证书合并在一起就可以了，合并时遵循最上面是 S 其次 I 最后 R，但是一般R都是内置了，所以可以省略</p><blockquote><p>S: Server CA   #域名证书<br>I: Information CA  #机构证书<br>R: Root CA  #根证书</p></blockquote></li><li><p>然后在nginx上配置我们改过的pem证书文件，以及分离的证书key，访问测试</p><blockquote><p>…<br>Certificate chain<br>0 s:/C=CN/ST=Jiangxi/L=Nanchang/O=Jiangling Motors Co.,LTD/OU=IT/CN=*.jmc.com.cn<br> i:/C=US/O=DigiCert Inc/CN=DigiCert SHA2 Secure Server CA<br>1 s:/C=US/O=DigiCert Inc/CN=DigiCert SHA2 Secure Server CA<br> i:/C=US/O=DigiCert Inc/OU=www.digicert.com/CN=DigiCert Global Root CA<br>…<br>Verify return code: 0 (ok)</p></blockquote></li></ul><p>成功。</p><p>后通过之前有问题的设备，打开微信访问域名已经可以打开并显示页面了。</p>]]></content>
     
@@ -119,7 +119,9 @@
       <category term="Web服务" scheme="http://finsos.github.io/categories/%E8%BF%90%E7%BB%B4%E8%AE%B0%E5%BD%95/Web%E6%9C%8D%E5%8A%A1/"/>
     
     
-      <category term="ssl,http" scheme="http://finsos.github.io/tags/ssl-http/"/>
+      <category term="ssl" scheme="http://finsos.github.io/tags/ssl/"/>
+    
+      <category term="http" scheme="http://finsos.github.io/tags/http/"/>
     
   </entry>
   
